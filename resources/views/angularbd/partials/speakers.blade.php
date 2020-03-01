@@ -1,6 +1,16 @@
 <div class="Meetup__speakers" id="speakers">
     <h3 class="Meetup__sectionTitle">Meet Our Speakers</h3>
     <div class="Speaker">
+        <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/hasin-hayder.jpg') }}" alt="speaker" style="border-radius: 40px"></div>
+        <div class="Speaker__content">
+            <h5 class="Speaker__name">Hasin Hayder</h5>
+            <p class="Speaker__role">Co-founder, Happy Addons.</p>
+            <p class="Speaker__bio">
+                Hasin Hayder graduated in Civil Engineering from the Rajshahi University of Engineering and Technology (RUET) in Bangladesh. He is a Zend-certified Engineer and expert in developing localized applications. He is currently working as  Head of Ideas at ThemeBucket and co-founder at Happy Addons. Beside his full time job, Hasin writes his blog at https://hasin.wordpress.com, writes article in different websites and maintains his open source framework, Orchid.
+            </p>
+        </div>
+    </div>
+    <div class="Speaker">
         <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/mahtonu.jpg') }}" alt="speaker" style="border-radius: 40px"></div>
         <div class="Speaker__content">
             <h5 class="Speaker__name">M A Hossain Tonu</h5>
