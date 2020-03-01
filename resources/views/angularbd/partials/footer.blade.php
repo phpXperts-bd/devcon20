@@ -13,5 +13,5 @@
         <a class="Meetup__shareLink" href="{{ env('EVENT_FACEBOOK_LINK') }}" target="_blank"><img
                 src="{{ asset('phpxperts/icons/link-event.svg') }}" alt=""></a>
     </div>
-    <div class="Credit">Crafted by <a href="https://www.facebook.com/zafree" target="_blank">Zafree</a></div>
+    <div class="Credit">Designed by <a href="https://www.facebook.com/zafree" target="_blank">Zafree</a></div>
 </footer>
