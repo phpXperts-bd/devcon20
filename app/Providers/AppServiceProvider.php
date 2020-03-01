@@ -12,18 +12,19 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register(UrlGenerator $url)
+    public function register()
     {
-        $url->forceScheme(env('HTTP_PROTOCOL', 'http'));
+
     }
 
     /**
      * Bootstrap any application services.
      *
+     * @param UrlGenerator $url
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
-        //
+        $url->forceScheme(env('HTTP_PROTOCOL', 'http'));
     }
 }
