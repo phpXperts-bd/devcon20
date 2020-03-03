@@ -28,6 +28,16 @@
         </div>
     </div>
     <div class="Speaker">
+        <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/tawsif.jpg') }}" alt="speaker" style="border-radius: 40px"></div>
+        <div class="Speaker__content">
+            <h5 class="Speaker__name">Tawsif Aqib</h5>
+            <p class="Speaker__role">Head of Engineering, Intelligent Machines Limited.</p>
+            <p class="Speaker__bio">
+                A full stack software engineer. Working with PHP, Laravel, Lumen, JS, React for more than 8 years. A devoted husband, gamer and scout. Loves API, Elixir, system design, automation and coffee.
+            </p>
+        </div>
+    </div>
+    <div class="Speaker">
         <div class="Speaker__avatar">
 {{--            <img src="{{ asset('phpxperts/images/shihan.jpg') }}" alt="speaker" style="border-radius: 40px">--}}
         </div>
