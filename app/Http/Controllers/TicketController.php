@@ -125,7 +125,7 @@ class TicketController extends Controller
             return $this->redirectToIndex(env('PAYMENT_ERROR_MESSAGE'), 'error');
         }
 
-        $attendee = Attendee::find(data_get($request, 'attendee_id', null));
+        $attendee = Attendee::where('uuid', data_get($request, 'opt_a', null))->first();
 
         if (blank($attendee)) {
             Log::info("Attendee is not available! id: " . data_get($request, 'attendee_id', null));
