@@ -5,7 +5,7 @@
                 @if($attendee->is_paid == '0')
                     Ticket Price {{ env('EVENT_TICKET_PRICE') }}tk
                 @else
-                    Congratulations! You have secured your seat by paying successfully.    
+                    Congratulations! You have secured your seat by paying successfully.
                 @endif
             </h4>
             <p class="Meetup__sectionCopy"></p>
@@ -45,7 +45,15 @@
                     <span>{{ data_get($attendee, 'instruction') }}</span>
                 </div>
                 @if($attendee->is_paid == '0')
-                    <button type="submit" class="Button Button--submit" onclick="location.href='https://thesoftking.com/ng-meetup/?attendee_id={{ $attendee->id }}&uuid={{ $attendee->uuid }}&name={{ $attendee->name }}&email={{ $attendee->email }}&mobile={{ $attendee->mobile }}'">{{ 'Pay '.env('EVENT_TICKET_PRICE').'tk' }}</button>
+                        {!!
+                            aamarpay_post_button([
+                                'cus_name'  => $attendee->name, // Customer name
+                                'cus_email' => $attendee->email, // Customer email
+                                'cus_phone' => $attendee->mobile,// Customer Phone,
+                                'opt_a' => $attendee->uuid,
+                            ], env('EVENT_TICKET_PRICE'), '<i class="fa fa-money">Pay ' . env('EVENT_TICKET_PRICE'). 'tk</i>', 'Button Button--submit')
+                        !!}
+{{--                    <button type="submit" class="Button Button--submit" onclick="location.href='https://thesoftking.com/ng-meetup/?attendee_id={{ $attendee->id }}&uuid={{ $attendee->uuid }}&name={{ $attendee->name }}&email={{ $attendee->email }}&mobile={{ $attendee->mobile }}'">{{ 'Pay '.env('EVENT_TICKET_PRICE').'tk' }}</button>--}}
                 @endif
             </div>
         </main>
