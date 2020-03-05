@@ -11,7 +11,7 @@
 
         @include('angularbd.partials.venue')
 
-{{--        @include('angularbd.partials.sponsors')--}}
+        @include('angularbd.partials.sponsors')
 
 {{--        @include('angularbd.partials.previous-meetup-gallery')--}}
 

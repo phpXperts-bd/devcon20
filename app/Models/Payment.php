@@ -19,6 +19,7 @@ class Payment extends Model
         'amount',
         'transaction_id',
         'api_response',
+        'status',
     ];
 
     protected $casts = [

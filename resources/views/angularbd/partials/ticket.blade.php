@@ -5,7 +5,7 @@
     <br/><br/>
     At the event, in case you need support for physical disabilities, health issues, food alergies, or any information that we need to know, please use "Additional Note" for this purpose.
     <br/><br/>
-    <strong>Angular question poped into your head?</strong> or Any specific topic that you you wanted to hear/discuss in the event? please feel free to leave "Additional Note".
+    <strong>Any php related question poped into your head?</strong> or Any specific topic that you you wanted to hear/discuss in the event? please feel free to leave "Additional Note".
     </p>
     @endif
 

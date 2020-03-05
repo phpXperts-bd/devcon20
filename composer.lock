@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e8ab6f1d7900a16eb87b62a5a7dc35f",
+    "content-hash": "719d7b59e8f1bc2143fb379c65d6e445",
     "packages": [
         {
             "name": "backpack/crud",
@@ -2953,7 +2953,7 @@
         },
         {
             "name": "shipu/php-aamarpay-payment",
-            "version": "dev-master",
+            "version": "v1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Shipu/php-aamarpay-payment.git",
@@ -3013,6 +3013,63 @@
                 "php-aamarpay"
             ],
             "time": "2019-09-30T14:14:34+00:00"
+        },
+        {
+            "name": "shipu/php-sslwireless-payment",
+            "version": "v1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Shipu/php-sslwireless-payment.git",
+                "reference": "d3e1fe2a505b868ed73a7fdd197e4baeca21d0dd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Shipu/php-sslwireless-payment/zipball/d3e1fe2a505b868ed73a7fdd197e4baeca21d0dd",
+                "reference": "d3e1fe2a505b868ed73a7fdd197e4baeca21d0dd",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.2",
+                "php": ">=5.5.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Shipu\\SslWPayment\\SslWPaymentServiceProvider"
+                    ],
+                    "aliases": {
+                        "Payment": "Shipu\\SslWPayment\\Facades\\Payment"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Shipu\\SslWPayment\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC(1.0)"
+            ],
+            "authors": [
+                {
+                    "name": "Shipu Ahamed",
+                    "email": "shipuahamed01@gmail.com"
+                }
+            ],
+            "description": "PHP client for SSL Wireless Payment API",
+            "keywords": [
+                "SSL Wireless",
+                "api",
+                "php",
+                "php-ssl-payment",
+                "sms"
+            ],
+            "time": "2020-03-05T06:57:58+00:00"
         },
         {
             "name": "shipu/watchable",
@@ -7029,7 +7086,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "shipu/php-aamarpay-payment": 20,
         "shipu/watchable": 20
     },
     "prefer-stable": true,
