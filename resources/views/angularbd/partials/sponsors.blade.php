@@ -12,6 +12,6 @@
     </div>
     <h4 class="Meetup__sectionTitle">Payment partner</h4>
     <div class="Meetup__sponsorsWrapper">
-        <a class="Meetup__sponsor" href="http://www.devnetlimited.com/" target="_blank"><img src="{{ asset('phpxperts/images/sponsor-8.png') }}" alt="sponsor"></a>
+        <a class="Meetup__sponsor" href="https://aamarpay.com/" target="_blank"><img src="{{ asset('phpxperts/images/sponsor-8.png') }}" alt="sponsor"></a>
     </div>
 </div>
