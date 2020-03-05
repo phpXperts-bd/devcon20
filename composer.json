@@ -16,7 +16,8 @@
         "laravel/tinker": "^1.0",
         "realrashid/sweet-alert": "^2.0",
         "shipu/muthofun-sms-gateway": "^1.0",
-        "shipu/php-aamarpay-payment": "dev-master",
+        "shipu/php-aamarpay-payment": "^1.2",
+        "shipu/php-sslwireless-payment": "^1.0",
         "shipu/watchable": "dev-master",
         "simplesoftwareio/simple-qrcode": "^2.0",
         "spatie/laravel-medialibrary": "^7.14"
