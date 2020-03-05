@@ -76,7 +76,7 @@
             <h5 class="Speaker__name">Mozammel Haque</h5>
             <p class="Speaker__role">GM, Head of Solution Engineering, Product & Technology Division, bKash Limited.</p>
             <p class="Speaker__bio">
-                A full stack software engineer. Working with PHP, Laravel, Lumen, JS, React for more than 8 years. A devoted husband, gamer and scout. Loves API, Elixir, system design, automation and coffee.
+{{--                A full stack software engineer. Working with PHP, Laravel, Lumen, JS, React for more than 8 years. A devoted husband, gamer and scout. Loves API, Elixir, system design, automation and coffee.--}}
             </p>
         </div>
     </div>
@@ -86,7 +86,7 @@
             <h5 class="Speaker__name">Shahee Mirza</h5>
             <p class="Speaker__role">Head of Security Operations, Beetles Cyber Security Ltd.</p>
             <p class="Speaker__bio">
-                A full stack software engineer. Working with PHP, Laravel, Lumen, JS, React for more than 8 years. A devoted husband, gamer and scout. Loves API, Elixir, system design, automation and coffee.
+{{--                A full stack software engineer. Working with PHP, Laravel, Lumen, JS, React for more than 8 years. A devoted husband, gamer and scout. Loves API, Elixir, system design, automation and coffee.--}}
             </p>
         </div>
     </div>
@@ -99,15 +99,15 @@
             </p>
         </div>
     </div>
-    <div class="Speaker">
-        <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/mahtonu.jpg') }}" alt="speaker" style="border-radius: 40px"></div>
-        <div class="Speaker__content">
-            <h5 class="Speaker__name">Anis Ahmed</h5>
-            <p class="Speaker__role">Software Development Lead, Vantage Labs Dhaka.</p>
-            <p class="Speaker__bio">A passionate developer, community activist, PHP & JavaScript hacker & the author of the book “PHP Application Development with NetBeans: Beginner's Guide”. He is working at Vantage Labs, Dhaka (http://www.vantage.com/) where he is maintaining a highly available SAAS platforms like Amped (https://amped.ai) that is the single most intuitive and easy to use Customer Relationship Management system on the market and Delyte (https://delyte.ai) that is the new generation Customer Support for any company support reps. He had worked with Public Health Service & Solutions (PHSS),  http://www.thephss.org as a Research and Development Lead for three years and designed & led a good number of software products/teams for Nigeria’s National Polio Eradication Program with World Health Organization (WHO) and Bill & Melinda Gates Foundation.
-            </p>
-        </div>
-    </div>
+{{--    <div class="Speaker">--}}
+{{--        <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/mahtonu.jpg') }}" alt="speaker" style="border-radius: 40px"></div>--}}
+{{--        <div class="Speaker__content">--}}
+{{--            <h5 class="Speaker__name">Anis Ahmed</h5>--}}
+{{--            <p class="Speaker__role">Software Development Lead, Vantage Labs Dhaka.</p>--}}
+{{--            <p class="Speaker__bio">A passionate developer, community activist, PHP & JavaScript hacker & the author of the book “PHP Application Development with NetBeans: Beginner's Guide”. He is working at Vantage Labs, Dhaka (http://www.vantage.com/) where he is maintaining a highly available SAAS platforms like Amped (https://amped.ai) that is the single most intuitive and easy to use Customer Relationship Management system on the market and Delyte (https://delyte.ai) that is the new generation Customer Support for any company support reps. He had worked with Public Health Service & Solutions (PHSS),  http://www.thephss.org as a Research and Development Lead for three years and designed & led a good number of software products/teams for Nigeria’s National Polio Eradication Program with World Health Organization (WHO) and Bill & Melinda Gates Foundation.--}}
+{{--            </p>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <div class="Speaker">
         <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/heera.png') }}" alt="speaker" style="border-radius: 40px"></div>
         <div class="Speaker__content">
