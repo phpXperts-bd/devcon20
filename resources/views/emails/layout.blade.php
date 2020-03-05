@@ -1146,7 +1146,7 @@
                                            href="{{ env('EVENT_FACEBOOK_LINK') }}"><img
                                                 style="border: 0;display: block;height: auto;width: 100%;max-width: 900px;"
                                                 alt="" width="560"
-                                                src="{{ asset('phpxperts/images/event-banner.png') }}"></a>
+                                                src="{{ asset('phpxperts/images/event_banner.png') }}"></a>
                                     </div>
                                 @endif
                             </div>
@@ -1171,7 +1171,7 @@
                             <table align="center" cellpadding="0" cellspacing="0" role="presentation">
                                 <tr class="layout-fixed-width" style="background-color: #ffffff;">
                                     @foreach(range($start, ($row * 4)) as $number)
-                                    @if($number >= 8) @break @endif
+                                    @if($number >= 5) @break @endif
                                     <td style="width: 200px" valign="top" class="w160"></table><![endif]-->
                             <div class="column"
                                  style="text-align: left;color: #656873;font-size: 14px;line-height: 21px;font-family: Open Sans,sans-serif;Float: left;max-width: 320px;min-width: 100px; width: 320px;width: calc(72200px - 12000%);">
@@ -1183,7 +1183,7 @@
                                            href="#"><img
                                                 style="border: 0;display: block;height: auto;width: 110px;max-width: 400px;"
                                                 alt="" width="160"
-                                                src="{{ asset('phpxperts/images/sponsor-'.$number.'.png') }}"></a>
+                                                src="{{ asset('phpxperts/images/sponsors/sponsor'.$number.'.png') }}"></a>
                                     </div>
                                 </div>
                             </div>
@@ -1218,12 +1218,6 @@
                                                             style="border: 0;"
                                                             src="https://i2.createsend1.com/static/eb/master/13-the-blueprint-3/images/facebook.png"
                                                             width="26" height="26" alt="Facebook"></a></td>
-                                                <td class="emb-web-links" style="padding: 0 0 0 3px;width: 26px;"><a
-                                                        style="text-decoration: underline;transition: opacity 0.1s ease-in;color: #939496;"
-                                                        href="{{ env('GROUP_TWITTER_LINK') }}"><img
-                                                            style="border: 0;"
-                                                            src="https://i3.createsend1.com/static/eb/master/13-the-blueprint-3/images/twitter.png"
-                                                            width="26" height="26" alt="Twitter"></a></td>
                                             </tr>
                                             </tbody>
                                         </table>

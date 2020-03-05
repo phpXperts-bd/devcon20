@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\PaymentStatus;
 use App\Http\Requests\AttendeeRequest;
 use App\Models\Attendee;
 use App\Models\Payment;
@@ -120,7 +121,7 @@ class TicketController extends Controller
         Log::info($request->route()->getName());
         Log::debug($request->all());
 
-        if ($request->get('pay_status') == 'Failed') {
+        if ($request->get('pay_status') !== PaymentStatus::VALID) {
             Log::info("pay_status failure");
             return $this->redirectToIndex(env('PAYMENT_ERROR_MESSAGE'), 'error');
         }
@@ -139,8 +140,14 @@ class TicketController extends Controller
         if (!blank($payment)) {
             //                dispatch(new SendEmailJob($attendee, new SucccessPayment($attendee)));
             //                dispatch(new SendSmsJob($attendee, env('SUCCESS_MESSAGE')));
-            Log::info("Paid successfully!");
-            return $this->redirectToIndex(env('PAYMENT_SUCCESS_MESSAGE'), 'success');
+            if ($payment->status === PaymentStatus::VALID) {
+                Log::info("Paid successfully!");
+                return $this->redirectToIndex(env('PAYMENT_SUCCESS_MESSAGE'), 'success');
+            } else {
+                Log::info("Payments failed!");
+                return $this->redirectToIndex(env('PAYMENT_ERROR_MESSAGE'), 'warning');
+            }
+
         } else {
             Log::info("Payments failed!");
         }
@@ -151,11 +158,13 @@ class TicketController extends Controller
 
     public function createPayment($attendee, Request $request)
     {
-        $attendee->is_paid = true;
-        $attendee->save();
+        if ($request->get('pay_status') === PaymentStatus::VALID) {
+            $attendee->is_paid = true;
+            $attendee->save();
+        }
 
         if (
-            Payment::where('attendee_id', data_get($request, 'attendee_id', null))->exists() ||
+            Payment::where('status', PaymentStatus::VALID)->where('attendee_id', data_get($request, 'attendee_id', null))->exists() ||
             Payment::where('transaction_id', data_get($request, 'transaction_id', 'done'))->exists()
         ) {
             Log::info("Already paid! id: " . $attendee->id);
@@ -167,6 +176,7 @@ class TicketController extends Controller
             'card_type'      => data_get($request, 'card_type', null),
             'transaction_id' => data_get($request, 'transaction_id', 'ok'),
             'amount'         => data_get($request, 'amount', 0),
+            'status'         => data_get($request,'pay_status', PaymentStatus::FAILED),
             'api_response'   => $request->all()
         ]);
     }
