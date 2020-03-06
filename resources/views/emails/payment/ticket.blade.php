@@ -35,10 +35,10 @@
 <br>
 
 @php $start = 1; @endphp
-@foreach(range(1, 3) as $row)
+@foreach(range(1, 2) as $row)
     <div style="text-align: center">
-        @foreach(range($start, ($row * 4)) as $number)
-            @if($number >= 6) @break @endif
+        @foreach(range($start, 5) as $number)
+            @if($number > 2 && $row == 1) @break @endif
 
             <a style="text-decoration: underline;transition: opacity 0.1s ease-in;color: #f4645f;"
                href="#">
@@ -49,7 +49,7 @@
             </a>
         @endforeach
     </div>
-    @php $start += 4; @endphp
+    @php $start += 2; @endphp
 @endforeach
 <br>
 <br>
