@@ -23,6 +23,16 @@ class TicketController extends Controller
         return !$registrationStart;
     }
 
+    public function soldOut()
+    {
+        $total = Attendee::where('is_paid', 1)->count();
+        if ($total >= env('PUBLIC_TICKET')) {
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * @param null $message
      * @param $toastType
@@ -43,6 +53,11 @@ class TicketController extends Controller
         if ($this->closeRegistration()) {
             return $this->redirectToIndex('Registration Coming Soon !! Please stay with us !', 'warning');
         }
+
+        if($this->soldOut()) {
+            return $this->redirectToIndex("Sold Out !!!");
+        }
+
         $attendeeType = AttendeeType::ATTENDEE;
         return view('angularbd.buy-ticket', compact('attendeeType'));
     }
@@ -67,16 +82,20 @@ class TicketController extends Controller
         if ($attendeeType != AttendeeType::ATTENDEE) {
             $attendee = Attendee::create($request->all());
             if (!blank($attendee)) {
-                Log::info("Attendee type " . AttendeeType::ATTENDEE . " created successfully!");
+                Log::info("Attendee type " . $attendeeType . " created successfully!");
                 return $this->redirectToIndex(env('SUCCESSFUL_REGISTRATION_MESSAGE'), 'success');
             } else {
-                Log::info("Attendee type " . AttendeeType::ATTENDEE . " creation failed!");
+                Log::info("Attendee type " . $attendeeType . " creation failed!");
                 return $this->redirectToIndex("Something Went Wrong !!", 'error');
             }
         }
 
         if ($this->closeRegistration()) {
             return $this->redirectToIndex('Registration Closed', 'error');
+        }
+
+        if($this->soldOut()) {
+            return $this->redirectToIndex("Sold Out !!!");
         }
 
         $attendee = Attendee::where([
@@ -102,8 +121,7 @@ class TicketController extends Controller
 
     public function ticketPayment(Attendee $attendee)
     {
-        $total = Attendee::where('is_paid', 1)->count();
-        if ($total >= env('PUBLIC_TICKET')) {
+        if ($this->soldOut()) {
             return $this->redirectToIndex("Sold Out !!!");
         }
 
