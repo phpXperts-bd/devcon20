@@ -70,4 +70,11 @@ class Attendee extends Model
             dispatch(new SendSmsJob($this, ($this->type==\App\Enums\AttendeeType::ATTENDEE?env('CONFIRM_MESSAGE'):env('GUEST_MESSAGE'))));
         }
     }
+
+    public function openPaymentPage()
+    {
+        if (!$this->is_paid) {
+            return '<a class="btn btn-sm btn-link" target="_blank" href="'. route('ticket.payment', ['attendee' => $this->id]).'" data-toggle="tooltip" title="Payment"><i class="fa fa-money"></i> Payment</a>';
+        }
+    }
 }
