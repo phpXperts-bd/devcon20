@@ -19,8 +19,10 @@ class TicketController extends Controller
     protected function closeRegistration()
     {
         $registrationStart = env('EVENT_REGISTRATION_START', false);
+        $totalTicket = env('PUBLIC_TICKET');
+        $totalPaid = Attendee::where('is_paid', true)->get()->count();
 
-        return !$registrationStart;
+        return !$registrationStart || !($totalPaid < $totalTicket);
     }
 
     /**
@@ -74,7 +76,6 @@ class TicketController extends Controller
                 return $this->redirectToIndex("Something Went Wrong !!", 'error');
             }
         }
-
         if ($this->closeRegistration()) {
             return $this->redirectToIndex('Registration Closed', 'error');
         }
