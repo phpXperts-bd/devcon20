@@ -38,14 +38,14 @@
 @foreach(range(1, 3) as $row)
     <div style="text-align: center">
         @foreach(range($start, ($row * 4)) as $number)
-            @if($number >= 9) @break @endif
+            @if($number >= 6) @break @endif
 
             <a style="text-decoration: underline;transition: opacity 0.1s ease-in;color: #f4645f;"
                href="#">
                 <img
                     style="border: 0;display: block;height: auto;width: 120px;max-width: 400px;"
                     alt="" width="260"
-                    src="{{ public_path('phpxperts/images/sponsor-'.$number.'.png') }}">
+                    src="{{ public_path('phpxperts/images/sponsors/sponsor'.$number.'.png') }}">
             </a>
         @endforeach
     </div>
