@@ -5,5 +5,5 @@
             href="{{ env('EVENT_GOOGLE_MAP') }}"
             target="_blank">[Google Map]</a></p>
     <h4 class="Meetup__venueTitle">Time</h4>
-    <p class="Meetup__venueCopy">{{ \Illuminate\Support\Carbon::parse(env('EVENT_DATE'))->format('d F Y') }} <br>3PM -7PM</p>
+    <p class="Meetup__venueCopy">{{ \Illuminate\Support\Carbon::parse(env('EVENT_DATE'))->format('d F Y') }} <br>3PM -8PM</p>
 </div>

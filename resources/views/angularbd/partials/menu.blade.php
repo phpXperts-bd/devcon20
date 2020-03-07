@@ -5,7 +5,7 @@
         <a class="Meetup__navigationLink" href="#speakers">Speakers</a>
 {{--        <a class="Meetup__navigationLink" href="#sessions">Sessions</a>--}}
         <a class="Meetup__navigationLink" href="#venue">Venue</a>
-{{--        <a class="Meetup__navigationLink" href="#sponsors">Sponsors</a>--}}
-{{--        <a class="Meetup__navigationLink" href="#gallery">Gallery</a>--}}
+{{        <a class="Meetup__navigationLink" href="#sponsors">Sponsors</a>}}
+{{        <a class="Meetup__navigationLink" href="#gallery">Gallery</a>}}
     </div>
 </header>
