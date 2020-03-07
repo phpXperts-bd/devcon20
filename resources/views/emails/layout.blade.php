@@ -1162,7 +1162,7 @@
 
 
                 @php $start = 1; @endphp
-                @foreach(range(1, 3) as $row)
+                @foreach(range(1, 2) as $row)
                     <div class="layout three-col fixed-width"
                          style="Margin: 0 auto;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">
                         <div class="layout__inner"
@@ -1170,8 +1170,8 @@
                             <!--[if (mso)|(IE)]>
                             <table align="center" cellpadding="0" cellspacing="0" role="presentation">
                                 <tr class="layout-fixed-width" style="background-color: #ffffff;">
-                                    @foreach(range($start, ($row * 4)) as $number)
-                                    @if($number >= 6) @break @endif
+                                    @foreach(range($start, 5) as $number)
+                                    @if($number > 2 && $row == 1) @break @endif
                                     <td style="width: 200px" valign="top" class="w160"></table><![endif]-->
                             <div class="column"
                                  style="text-align: left;color: #656873;font-size: 14px;line-height: 21px;font-family: Open Sans,sans-serif;Float: left;max-width: 320px;min-width: 100px; width: 320px;width: calc(72200px - 12000%);">
@@ -1193,7 +1193,7 @@
                             </table><![endif]-->
                         </div>
                     </div>
-                    @php $start += 4; @endphp
+                    @php $start += 2; @endphp
                 @endforeach
 
                 <div role="contentinfo">
