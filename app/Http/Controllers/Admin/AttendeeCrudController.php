@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AttendeeRequest;
 use App\Jobs\SendEmailJob;
+use App\Mail\SuccessfullyCreateAttendee;
 use App\Mail\ThanksForJoining;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\Route;
@@ -244,6 +245,12 @@ class AttendeeCrudController extends CrudController
             'uses'      => $controller.'@bulkTicket',
             'operation' => 'bulkTicket',
         ]);
+
+        Route::post($segment.'/bulk-email-for-pay', [
+            'as'        => $routeName.'.bulkSendEmailForPay',
+            'uses'      => $controller.'@bulkSendEmailForPay',
+            'operation' => 'bulkSendEmailForPay',
+        ]);
     }
 
     /**
@@ -252,19 +259,25 @@ class AttendeeCrudController extends CrudController
     protected function setupBulkDeleteDefaults()
     {
         $this->crud->allowAccess('bulkTicket');
+        $this->crud->allowAccess('bulkSendEmailForPay');
 
         $this->crud->operation('bulkTicket', function () {
+            $this->crud->loadDefaultOperationSettingsFromConfig();
+        });
+
+        $this->crud->operation('bulkSendEmailForPay', function () {
             $this->crud->loadDefaultOperationSettingsFromConfig();
         });
 
         $this->crud->operation('list', function () {
             $this->crud->enableBulkActions();
             $this->crud->addButton('bottom', 'bulk_ticket', 'view', 'crud::buttons.bulk_ticket');
+            $this->crud->addButton('bottom', 'bulk_send_email_for_pay', 'view', 'crud::buttons.bulk_send_email_for_pay');
         });
     }
 
     /**
-     * Delete multiple entries in one go.
+     * Bulk Send tickets.
      *
      * @return string
      */
@@ -283,6 +296,29 @@ class AttendeeCrudController extends CrudController
         }
 
         return $sendTickets;
+    }
+
+    /**
+     * Send Email for pay
+     *
+     * @return string
+     */
+    public function bulkSendEmailForPay()
+    {
+        $this->crud->applyConfigurationFromSettings('bulkSendEmailForPay');
+        $this->crud->hasAccessOrFail('bulkSendEmailForPay');
+
+        $entries = $this->request->input('entries');
+        $sendEmailForPay = [];
+
+
+        foreach ($entries as $key => $id) {
+            if ($entry = $this->crud->model->find($id)) {
+                $sendEmailForPay[] = dispatch(new SendEmailJob($entry, new SuccessfullyCreateAttendee($entry)));
+            }
+        }
+
+        return $sendEmailForPay;
     }
 
     public function store()
