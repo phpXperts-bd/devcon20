@@ -26,7 +26,7 @@ class TicketController extends Controller
     public function soldOut()
     {
         $total = Attendee::where('is_paid', 1)->count();
-        if ($total >= env('PUBLIC_TICKET')) {
+        if ($total >= env('PUBLIC_TICKET') || env('EVENT_TICKET_SOLD_OUT', false)) {
             return true;
         }
 
