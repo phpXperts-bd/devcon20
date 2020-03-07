@@ -37,11 +37,3 @@ Route::get('qrcode/{attendee}', function (\App\Models\Attendee $attendee) {
     return view('emails.payment.qr_code', compact('attendee'));
 });
 
-Route::get('/test', function () {
-   try {
-       $attendee = \App\Models\Attendee::find(8);
-       dispatch(new \App\Jobs\SendEmailJob($attendee, new \App\Mail\SuccessfullyCreateAttendee($attendee)));
-   } catch (\Exception $exception) {
-       dd($exception->getMessage());
-   }
-});

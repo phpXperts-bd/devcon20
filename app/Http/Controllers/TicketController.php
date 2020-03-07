@@ -89,7 +89,6 @@ class TicketController extends Controller
                 return $this->redirectToIndex("Something Went Wrong !!", 'error');
             }
         }
-
         if ($this->closeRegistration()) {
             return $this->redirectToIndex('Registration Closed', 'error');
         }
