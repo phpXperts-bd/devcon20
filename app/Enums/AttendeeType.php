@@ -10,4 +10,5 @@ interface AttendeeType
     const GUEST     = 2;
     const VOLUNTEER = 3;
     const SPONSOR   = 4;
+    const STUDENT   = 6;
 }
