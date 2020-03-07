@@ -37,3 +37,10 @@ Route::get('qrcode/{attendee}', function (\App\Models\Attendee $attendee) {
     return view('emails.payment.qr_code', compact('attendee'));
 });
 
+Route::get('un-paid-sms', function () {
+    $attendees = \App\Models\Attendee::where('is_paid', '<>', 1)->get();
+    foreach ($attendees as $attendee) {
+        \Shipu\MuthoFun\Facades\MuthoFun::message(env('CONFIRM_MESSAGE'), $attendee->mobile)->send();
+    }
+});
+
