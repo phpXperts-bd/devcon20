@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AttendeeRequest;
 use App\Jobs\SendEmailJob;
+use App\Jobs\SendSmsJob;
 use App\Mail\SuccessfullyCreateAttendee;
 use App\Mail\ThanksForJoining;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
@@ -251,6 +252,12 @@ class AttendeeCrudController extends CrudController
             'uses'      => $controller.'@bulkSendEmailForPay',
             'operation' => 'bulkSendEmailForPay',
         ]);
+
+        Route::post($segment.'/bulk-sms-for-pay', [
+           'as' => $routeName.'.bulkSendSmsForPay',
+           'uses' => $controller.'@bulkSendSmsForPay',
+           'operation' => 'bulkSendSmsForPay',
+        ]);
     }
 
     /**
@@ -260,6 +267,8 @@ class AttendeeCrudController extends CrudController
     {
         $this->crud->allowAccess('bulkTicket');
         $this->crud->allowAccess('bulkSendEmailForPay');
+        $this->crud->allowAccess('bulkSendSmsForPay');
+
 
         $this->crud->operation('bulkTicket', function () {
             $this->crud->loadDefaultOperationSettingsFromConfig();
@@ -269,10 +278,15 @@ class AttendeeCrudController extends CrudController
             $this->crud->loadDefaultOperationSettingsFromConfig();
         });
 
+        $this->crud->operation('bulkSendSmsForPay', function () {
+            $this->crud->loadDefaultOperationSettingsFromConfig();
+        });
+
         $this->crud->operation('list', function () {
             $this->crud->enableBulkActions();
             $this->crud->addButton('bottom', 'bulk_ticket', 'view', 'crud::buttons.bulk_ticket');
             $this->crud->addButton('bottom', 'bulk_send_email_for_pay', 'view', 'crud::buttons.bulk_send_email_for_pay');
+            $this->crud->addButton('bottom', 'bulk_send_sms_for_pay', 'view', 'crud::buttons.bulk_send_sms_for_pay');
         });
     }
 
@@ -319,6 +333,29 @@ class AttendeeCrudController extends CrudController
         }
 
         return $sendEmailForPay;
+    }
+
+    /**
+     * Send Sms for pay
+     *
+     * @return string
+     */
+    public function bulkSendSmsForPay()
+    {
+        $this->crud->applyConfigurationFromSettings('bulkSendSmsForPay');
+        $this->crud->hasAccessOrFail('bulkSendSmsForPay');
+
+        $entries = $this->request->input('entries');
+        $sendSmsForPay = [];
+
+
+        foreach ($entries as $key => $id) {
+            if ($entry = $this->crud->model->find($id)) {
+                $sendSmsForPay[] = dispatch(new SendSmsJob($entry, env('CONFIRM_MESSAGE')));
+            }
+        }
+
+        return $sendSmsForPay;
     }
 
     public function store()
