@@ -14,7 +14,7 @@
             <a class="Meetup__link" href="#sponsors">Our Proud Sponsors</a>
         </div>
         <div class="Meetup__item">
-{{--            <a class="Meetup__link" href="#gallery">Previous Meetup Gallery</a>--}}
+            <a class="Meetup__link" href="#gallery">Previous Meetup Gallery</a>
         </div>
 
     </div>

@@ -13,7 +13,7 @@
 
         @include('angularbd.partials.sponsors')
 
-{{--        @include('angularbd.partials.previous-meetup-gallery')--}}
+        @include('angularbd.partials.previous-meetup-gallery')
 
 {{--        @include('angularbd.partials.twitter')--}}
 
