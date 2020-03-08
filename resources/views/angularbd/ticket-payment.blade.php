@@ -2,7 +2,7 @@
     @section('content')
         <main class="Meetup__payment">
             <h4 class="Meetup__sectionTitle">
-                @if($attendee->is_paid == '0')
+                @if($attendee->is_paid == '0' && $attendee->type == \App\Enums\AttendeeType::ATTENDEE)
                     Ticket Price {{ env('EVENT_TICKET_PRICE') }}tk
                 @else
                     Congratulations! You have secured your seat by paying successfully.
@@ -10,7 +10,7 @@
             </h4>
             <p class="Meetup__sectionCopy"></p>
             <div class="Meetup__suspect">
-                @if($attendee->is_paid == '1')
+                @if($attendee->is_paid == '1' || $attendee->type != \App\Enums\AttendeeType::ATTENDEE)
                 <div class="Meetup__suspectCopy">
                     <span>id</span>
                     <span>{{ $attendee->uuid }}</span>
@@ -44,7 +44,7 @@
                     <span>Note</span>
                     <span>{{ data_get($attendee, 'instruction') }}</span>
                 </div>
-                @if($attendee->is_paid == '0')
+                @if($attendee->is_paid == '0' && $attendee->type == \App\Enums\AttendeeType::ATTENDEE)
                         {!!
                             aamarpay_post_button([
                                 'cus_name'  => $attendee->name, // Customer name
