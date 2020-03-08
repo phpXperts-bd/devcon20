@@ -31,6 +31,15 @@
         </div>
     </div>
     <div class="Speaker">
+        <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/shihan.jpg') }}" alt="speaker" style="border-radius: 40px"></div>
+        <div class="Speaker__content">
+            <h5 class="Speaker__name">Mohammad Nurul Islam (Shihan)</h5>
+            <p class="Speaker__role">Technical Board Advisor, Deligram Technology Ltd.</p>
+            <p class="Speaker__bio">Shihan is a full stack Software Architect, specialised in web & server technologies. In his 20+ years of career, he has worked with many languages, tools & technologies, that made him a perfect polyglot in software development. Starting with raw JS for rich frontend development, he has worked with almost all popular JS libraries & frameworks, including jQuery, Backbone, Angular, React & Vue. He is a constant practitioner/advocate of reusable patterns & best practices in software development, open source enthusiast, hacker and pure community guy. In his free time, he loves to spend time with his family, hangout with other engineers and occasionally share his knowledge in community conferences/meetups.
+            </p>
+        </div>
+    </div>
+    <div class="Speaker">
         <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/waiz-rahim.jpeg') }}" alt="speaker" style="border-radius: 40px"></div>
         <div class="Speaker__content">
             <h5 class="Speaker__name">Waiz rahim</h5>
@@ -117,14 +126,14 @@
         </div>
     </div>
 
-    <div class="Speaker">
-        <div class="Speaker__avatar">
+{{--    <div class="Speaker">--}}
+{{--        <div class="Speaker__avatar">--}}
 {{--            <img src="{{ asset('phpxperts/images/shihan.jpg') }}" alt="speaker" style="border-radius: 40px">--}}
-        </div>
-        <div class="Speaker__content">
-            <h5 class="Speaker__name">Coming Soon</h5>
-            <p class="Speaker__role"></p>
-            <p class="Speaker__bio"></p>
-        </div>
-    </div>
+{{--        </div>--}}
+{{--        <div class="Speaker__content">--}}
+{{--            <h5 class="Speaker__name">Coming Soon</h5>--}}
+{{--            <p class="Speaker__role"></p>--}}
+{{--            <p class="Speaker__bio"></p>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </div>
