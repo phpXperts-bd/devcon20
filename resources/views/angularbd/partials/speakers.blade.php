@@ -125,6 +125,14 @@
             <p class="Speaker__bio">He love to build and learn new things, currently working as the CTO at authlab where mostly work on complex web applications using php (Laravel, WordPress) and Javascript (jQuery, vue). Also, love to build custom plugins for WordPress and Composer based php packages.</p>
         </div>
     </div>
+    <div class="Speaker">
+        <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/anis.jpeg') }}" alt="speaker" style="border-radius: 40px"></div>
+        <div class="Speaker__content">
+            <h5 class="Speaker__name">Anis Uddin Ahmad</h5>
+            <p class="Speaker__role">Software Architect, Devnet Limited</p>
+            <p class="Speaker__bio">He is a web application architect, proficient in requirement analysis, sophisticated solution design and scalable application development.</p>
+        </div>
+    </div>
 
 {{--    <div class="Speaker">--}}
 {{--        <div class="Speaker__avatar">--}}
