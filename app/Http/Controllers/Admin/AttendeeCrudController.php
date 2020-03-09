@@ -138,6 +138,17 @@ class AttendeeCrudController extends CrudController
 
         $this->crud->addFilter([
             'type' => 'simple',
+            'name' => 'attendee',
+            'label'=> 'Attendee'
+        ],
+        false,
+        function() {
+            $this->crud->addClause('where', 'is_paid', '=', 1);
+            $this->crud->addClause('where', 'attend_at', '=', null);
+        });
+
+        $this->crud->addFilter([
+            'type' => 'simple',
             'name' => 'is_unpaid',
             'label'=> 'Un-Paid?'
         ],
