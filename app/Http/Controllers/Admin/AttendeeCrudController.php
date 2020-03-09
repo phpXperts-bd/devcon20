@@ -144,7 +144,7 @@ class AttendeeCrudController extends CrudController
         false,
         function() {
             $this->crud->addClause('where', 'is_paid', '=', 1);
-            $this->crud->addClause('where', 'attend_at', '=', null);
+            $this->crud->addClause('where', 'attend_at', '!=', null);
         });
 
         $this->crud->addFilter([
