@@ -34,8 +34,8 @@
         <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/shihan.jpg') }}" alt="speaker" style="border-radius: 40px"></div>
         <div class="Speaker__content">
             <h5 class="Speaker__name">Mohammad Nurul Islam (Shihan)</h5>
-            <p class="Speaker__role">Technical Board Advisor, Deligram Technology Ltd.</p>
-            <p class="Speaker__bio">Shihan is a full stack Software Architect, specialised in web & server technologies. In his 20+ years of career, he has worked with many languages, tools & technologies, that made him a perfect polyglot in software development. Starting with raw JS for rich frontend development, he has worked with almost all popular JS libraries & frameworks, including jQuery, Backbone, Angular, React & Vue. He is a constant practitioner/advocate of reusable patterns & best practices in software development, open source enthusiast, hacker and pure community guy. In his free time, he loves to spend time with his family, hangout with other engineers and occasionally share his knowledge in community conferences/meetups.
+            <p class="Speaker__role">Software Architect, Innovation Search LLC</p>
+            <p class="Speaker__bio">Shihan is a full stack Software Architect, specialised in web & server technologies. In his 20+ years of career, he has worked with many languages, tools & technologies, that made him a perfect polyglot in software development. Starting with QBasic for DOS based application development, he has worked with almost all popular language including Pascal, C/C++, Java, Delphi, VB/VB.Net, VC++, C#, Python, Rubi, PHP & JS. He is a constant practitioner/advocate of reusable patterns, best practices & object/service/module oriented architecture in software development, open source enthusiast, hacker and pure community guy. In his free time, he loves to spend time with his family, hangout with other engineers and occasionally share his knowledge in community conferences/meetups.
             </p>
         </div>
     </div>
@@ -46,6 +46,16 @@
             <p class="Speaker__role"> Founder & CEO, Deligram.</p>
             <p class="Speaker__bio">
                 Founder & CEO @ Deligram, an omni-channel eCommerce company which is working with traditional neighborhood convenience stores to convert them into eCommerce order & delivery pickup locations.
+            </p>
+        </div>
+    </div>
+    <div class="Speaker">
+        <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/mizan.jpeg') }}" alt="speaker" style="border-radius: 40px"></div>
+        <div class="Speaker__content">
+            <h5 class="Speaker__name">Mizanur Rahman</h5>
+            <p class="Speaker__role">Founder & CTO, Informatix Technologies</p>
+            <p class="Speaker__bio">
+                A passionate programmer and team player with agile mindset and more than 16 years of experience in web & mobile based application development using different languages and platforms focusing on best practice, security and scalability. A Software architect with interest in latest technologies and practices.
             </p>
         </div>
     </div>
@@ -131,6 +141,14 @@
             <h5 class="Speaker__name">Anis Uddin Ahmad</h5>
             <p class="Speaker__role">Software Architect, Devnet Limited</p>
             <p class="Speaker__bio">He is a web application architect, proficient in requirement analysis, sophisticated solution design and scalable application development.</p>
+        </div>
+    </div>
+    <div class="Speaker">
+        <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/mehedi.jpg') }}" alt="speaker" style="border-radius: 40px"></div>
+        <div class="Speaker__content">
+            <h5 class="Speaker__name">Mehedi Hasan</h5>
+            <p class="Speaker__role">Head Of Engineering, Witlingo</p>
+            <p class="Speaker__bio">He is an entrepreneurial, motivated self-starter, with deep experience on the full product life-cycle, from development, product engineering, and operational maintenance, with a deep understanding of the full business context within which he work. He love building and leading A+ teams and he is always on the look out for rare talent.</p>
         </div>
     </div>
 
