@@ -144,7 +144,7 @@
         </div>
     </div>
     <div class="Speaker">
-        <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/mehedi.jpg') }}" alt="speaker" style="border-radius: 40px"></div>
+        <div class="Speaker__avatar"><img src="{{ asset('phpxperts/images/mehedi.png') }}" alt="speaker" style="border-radius: 40px"></div>
         <div class="Speaker__content">
             <h5 class="Speaker__name">Mehedi Hasan</h5>
             <p class="Speaker__role">Head Of Engineering, Witlingo</p>
