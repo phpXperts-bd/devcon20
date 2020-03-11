@@ -105,8 +105,6 @@
             <h5 class="Speaker__name">M A Hossain Tonu</h5>
             <p class="Speaker__role">Software Development Lead at Vantage Labs Dhaka.</p>
             <p class="Speaker__bio">
-                "PHP Hacker, Foss advocate, Community activist, Author of the book
-                PHP Application Development with NetBeans: Beginner's Guide https://amazon.com/author/mahtonu"
                 A passionate developer, community activist, PHP & JavaScript hacker & the author of the book “PHP Application Development with NetBeans: Beginner's Guide”. He is working at Vantage Labs, Dhaka (http://www.vantage.com/) where he is maintaining a highly available SAAS platforms like Amped (https://amped.ai) that is the single most intuitive and easy to use Customer Relationship Management system on the market and Delyte (https://delyte.ai) that is the new generation Customer Support for any company support reps. He had worked with Public Health Service & Solutions (PHSS),  http://www.thephss.org as a Research and Development Lead for three years and designed & led a good number of software products/teams for Nigeria’s National Polio Eradication Program with World Health Organization (WHO) and Bill & Melinda Gates Foundation.
             </p>
         </div>
