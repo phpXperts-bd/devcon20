@@ -126,7 +126,7 @@
             <h5 class="Speaker__name">Sheikh Heera</h5>
             <p class="Speaker__role">Chief Technology Officer (CTO) at Authlab</p>
             <p class="Speaker__bio">
-                Started his programming journey since 1995 and being a professional developer since 2008. Basically He use PHP (Laravel, WordPress) and JavaScript (jQuery, Vue js) for web development but also he is a seasonal node js developer. He started his professional software development using .Net C#, while he used to build accounting apps but now he is a full time WordPress Plugin developer. I love to contribute on StackOverflow and right now I'm the top contributor on SO from Bangladesh.
+                He started his programming journey since 1995 and is a professional developer since 2008. Basically, he uses PHP (Laravel, WordPress) and JavaScript (jQuery, Vue js) for web development but he is also a seasonal node js developer. He has started his professional software development using .Net C#, while he used to build accounting apps but now he is a full-time WordPress Plugin developer. He loves to contribute to StackOverflow and right now he is the top contributor on SO from Bangladesh.
             </p>
         </div>
     </div>
