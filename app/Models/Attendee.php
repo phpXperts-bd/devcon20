@@ -77,4 +77,11 @@ class Attendee extends Model
             return '<a class="btn btn-sm btn-link" target="_blank" href="'. route('ticket.payment', ['attendee' => $this->id]).'" data-toggle="tooltip" title="Payment"><i class="fa fa-money"></i> Payment</a>';
         }
     }
+
+    public function setAttendAt()
+    {
+        if (blank($this->attend_at)) {
+            return '<a class="btn btn-sm btn-link" href="'. route('set.attend_at', ['id' => $this->id]).'" data-toggle="tooltip" title="Payment"><i class="fa fa-money"></i> Attend</a>';
+        }
+    }
 }
