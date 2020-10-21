@@ -58,17 +58,4 @@ php -- --install-dir=/usr/bin/ --filename=composer
 
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
-# Add user for laravel application
-RUN groupadd -g 1000 www
-RUN useradd -u 1000 -ms /bin/bash -g www www
-
-# Copy existing application directory contents
-COPY . /var/www/app
-
-# Copy existing application directory permissions
-COPY --chown=www:www . /var/www/app
-
-# Change current user to www
-USER www
-
 ENTRYPOINT ["/usr/local/bin/init.sh"]
