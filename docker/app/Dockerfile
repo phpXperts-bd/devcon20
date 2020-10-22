@@ -58,7 +58,6 @@ RUN apt-get install --no-install-recommends --no-install-suggests -q -y \
 
 # Override nginx's default config
 RUN rm -rf /etc/nginx/conf.d/default.conf
-ADD ./nginx-default.conf /etc/nginx/conf.d/default.conf
 ADD ./phpxperts.conf /etc/nginx/conf.d/phpxperts.conf
 
 # Install PHP and Libraries
