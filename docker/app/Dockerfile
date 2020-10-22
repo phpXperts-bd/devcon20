@@ -111,7 +111,7 @@ COPY ./crontab /etc/cron.d/cron
 RUN curl -sS https://getcomposer.org/installer | \
 /usr/bin/php7.3 -- --install-dir=/usr/bin/ --filename=composer
 
-RUN /usr/bin/php7.3 composr install
+RUN /usr/bin/php7.3 composer install
 RUN /usr/bin/php7.3 artisan key:generate
 RUN /usr/bin/php7.3 artisan config:cache
 
