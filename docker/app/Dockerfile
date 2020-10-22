@@ -106,7 +106,7 @@ RUN rm /bin/sh && ln -sf /bin/bash /bin/sh
 RUN source ~/.profile
 
 # Add Crontab
-COPY ./crontab /etc/cron.d/cron
+COPY ./crontab /etc/cron.d/devcon20-cron
 
 RUN curl -sS https://getcomposer.org/installer | \
 /usr/bin/php7.3 -- --install-dir=/usr/bin/ --filename=composer
