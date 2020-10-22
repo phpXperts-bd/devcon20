@@ -109,10 +109,10 @@ RUN source ~/.profile
 COPY ./crontab /etc/cron.d/cron
 
 RUN curl -sS https://getcomposer.org/installer | \
-/usr/local/bin/php -- --install-dir=/usr/bin/ --filename=composer
+/usr/bin/php7.3 -- --install-dir=/usr/bin/ --filename=composer
 
-RUN /usr/local/bin/php composr install
-RUN /usr/local/bin/php artisan key:generate
-RUN /usr/local/bin/php artisan config:cache
+RUN /usr/bin/php7.3 composr install
+RUN /usr/bin/php7.3 artisan key:generate
+RUN /usr/bin/php7.3 artisan config:cache
 
 CMD ["/init.sh"]
