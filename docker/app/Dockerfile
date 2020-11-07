@@ -96,8 +96,6 @@ WORKDIR /var/www/app
 # Add Scripts
 ADD ./init.sh /init.sh
 RUN chmod 755 /init.sh
-ADD ./init-letsencrypt.sh /init-letsencrypt.sh
-RUN chmod +x /init-letsencrypt.sh
 
 # We are not exposing 443 or TCP port port SSL as our loadbalancer will deal this
 EXPOSE 80
