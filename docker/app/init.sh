@@ -11,5 +11,7 @@ ls /var/www/app| xargs chown -Rf nginx:nginx
 env>>/etc/environment
 crontab /etc/cron.d/devcon20-cron
 
+./init-letsencrypt.sh
+
 # Start supervisord and services
 /usr/local/bin/supervisord -n -c /etc/supervisord.conf
