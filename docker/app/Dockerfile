@@ -30,6 +30,8 @@ RUN apt-get update \
     unzip \
     python-pip \
     python-setuptools \
+    python3-acme python3-certbot python3-mock python3-openssl python3-pkg-resources python3-pyparsing python3-zope.interface \
+    python3-certbot-nginx \
     dirmngr \
     ca-certificates
 
