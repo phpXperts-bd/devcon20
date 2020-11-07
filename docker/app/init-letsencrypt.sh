@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(phpxperts.net www.phpxperts.net)
+domains=(phpxperts.net)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="mahtonu@gmail.com" # Adding a valid address is strongly recommended
