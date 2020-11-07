@@ -21,7 +21,8 @@ services:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     container_name: certbot   
-    command: certonly --webroot --webroot-path=/var/www/app --email mahtonu@gmail.com --agree-tos --no-eff-email -d phpxperts.net  -d www.phpxperts.net
+    depends_on: app
+    command: certonly --webroot --webroot-path=/var/www/app --email mahtonu@gmail.com --agree-tos --no-eff-email --force-renewal -d phpxperts.net  -d www.phpxperts.net
 
   database:
     image: mysql:5.7
