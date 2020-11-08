@@ -10,8 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Shipu\Watchable\Traits\WatchableTrait;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Attendee extends Model
+
+class Attendee extends Authenticatable
 {
     use CrudTrait, WatchableTrait;
 

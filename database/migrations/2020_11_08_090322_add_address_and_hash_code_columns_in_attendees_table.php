@@ -18,7 +18,7 @@ class AddAddressAndHashCodeColumnsInAttendeesTable extends Migration
             $table->string('address_line_2')->nullable();
             $table->string('city')->nullable();
             $table->string('district')->nullable();
-            $table->uuid('hash_code')->nullable();
+            $table->char('hash_code', 20)->nullable();
             $table->timestamp('hash_code_duration')->nullable();
         });
     }

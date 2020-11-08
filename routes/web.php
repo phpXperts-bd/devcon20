@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+
 Route::view('/', 'angularbd.app')->name('angularbd.index');
 
 Route::get('get/ticket', 'TicketController@index')->name('buy.ticket');
@@ -20,11 +22,20 @@ Route::get('register/volunteer', 'TicketController@showOtherRegistration')->name
 
 Route::post('get/ticket', 'TicketController@storeAttendee')->name('buy.ticket.post');
 
+Route::middleware('guest')->get('/attendee/login', 'TicketController@showLoginForm')->name('attendee.login.form');
+Route::middleware('guest')->post('/attendee/login', 'TicketController@attendeeSignIn')->name('attendee.login.post');
+Route::middleware('auth')->get('attendee/update', 'TicketController@showAttendeeForm')->name('attendee.update.form.show');
+Route::middleware('auth')->post('attendee/update', 'TicketController@updateAttendee')->name('attendee.update.form.post');
+Route::get('/attendee/logout', function() {
+    Auth::logout();
+    return redirect('/');
+})->name('attendee.logout');
+
+
+
 Route::get('attendee/{uuid}/verify', 'TicketController@verifyAttendee')->name('attendee.verify');
 Route::get('attendee/{uuid}/attend', 'TicketController@approveAttendance')->name('attendee.attend');
 Route::get('attendee/search', 'TicketController@searchAttendee')->name('attendee.search');
-Route::get('attendee/{uuid}/update', 'TicketController@showAttendeeForm')->name('attendee.update.form.show');
-Route::post('attendee/{uuid}/update', 'TicketController@updateAttendee')->name('attendee.update.form.post');
 
 
 Route::get('attendee/{email}', 'TicketController@getAttendeeByEmail')->name('attendee.search.email');
