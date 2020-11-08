@@ -46,7 +46,7 @@ class GenrateHashCodeForAll extends Command
         }
 
         foreach ($attendees as $attendee) {
-            $attendee->hash_code = Uuid::uuid4();
+            $attendee->hash_code = \Str::random(20);
             $attendee->hash_code_duration = now()->addDays(env('HASH_CODE_DURATION_IN_DAYS', 5));
             $attendee->save();
         }

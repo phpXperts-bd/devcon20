@@ -11,6 +11,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -317,25 +318,45 @@ class TicketController extends Controller
         return view('angularbd.ticket-payment', compact('attendee'));
     }
 
-    public function showAttendeeForm($uuid) {
-        $attendee = Attendee::where('hash_code', $uuid)->first();
+    public function showLoginForm() {
+        $attendeeType = AttendeeType::GUEST;
+
+        return view('angularbd.login', compact('attendeeType'));
+    }
+
+    public function attendeeSignIn(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'hash_code' => ['required', 'string', 'min:20']
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $attendee = Attendee::where('hash_code', $request->input('hash_code'))->first();
 
         if (blank($attendee)) {
-            abort(404);
+            toast('Invalid hashcode!', 'warning');
+            return back();
         }
+
+        Auth::loginUsingId($attendee->id);
+
+        return redirect()->route('attendee.update.form.show');
+    }
+
+    public function showAttendeeForm() {
+
 
         $attendeeType = AttendeeType::GUEST;
 
-        // if($route == 'register.sponsor') {
-        //     $attendeeType = AttendeeType::SPONSOR;
-        // } elseif($route == 'register.volunteer') {
-        //     $attendeeType = AttendeeType::VOLUNTEER;
-        // }
+        $attendee = auth()->user();
 
         return view('angularbd.buy-ticket-edit', compact('attendeeType', 'attendee'));
     }
 
-    public function updateAttendee($uuid, Request $request) {
+    public function updateAttendee( Request $request) {
+
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string'],
             'profession' => ['required', 'string'],
@@ -350,7 +371,7 @@ class TicketController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $attendee = Attendee::where('hash_code', $uuid)->first();
+        $attendee = Attendee::find(auth()->user()->id);
 
         if (blank($attendee)) {
             abort(404);
@@ -367,6 +388,6 @@ class TicketController extends Controller
             toast('Not updated!', 'warning');
         }
 
-        return redirect()->route('attendee.update.form.show', ['uuid' => $uuid]);
+        return redirect()->route('attendee.update.form.show');
     }
 }
