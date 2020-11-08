@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
+
 //use Shipu\Aamarpay\Facades\Aamarpay;
 
 class TicketController extends Controller
@@ -313,5 +315,58 @@ class TicketController extends Controller
             return $this->redirectToIndex("Attendee is not available!", 'error');
         }
         return view('angularbd.ticket-payment', compact('attendee'));
+    }
+
+    public function showAttendeeForm($uuid) {
+        $attendee = Attendee::where('hash_code', $uuid)->first();
+
+        if (blank($attendee)) {
+            abort(404);
+        }
+
+        $attendeeType = AttendeeType::GUEST;
+
+        // if($route == 'register.sponsor') {
+        //     $attendeeType = AttendeeType::SPONSOR;
+        // } elseif($route == 'register.volunteer') {
+        //     $attendeeType = AttendeeType::VOLUNTEER;
+        // }
+
+        return view('angularbd.buy-ticket-edit', compact('attendeeType', 'attendee'));
+    }
+
+    public function updateAttendee($uuid, Request $request) {
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string'],
+            'profession' => ['required', 'string'],
+            'social_profile_url' => ['required', 'url'],
+            'address_line_1' => ['nullable', 'string'],
+            'address_line_2' => ['nullable', 'string'],
+            'city' => ['nullable', 'string'],
+            'district' => ['nullable', 'string']
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $attendee = Attendee::where('hash_code', $uuid)->first();
+
+        if (blank($attendee)) {
+            abort(404);
+        }
+
+        foreach ($validator->validated() as $column => $value) {
+            $attendee->{$column} = $value;
+        }
+
+        try {
+            $attendee->save();
+            toast('Update successfully!', 'success');
+        } catch (\Exception $ex) {
+            toast('Not updated!', 'warning');
+        }
+
+        return redirect()->route('attendee.update.form.show', ['uuid' => $uuid]);
     }
 }
