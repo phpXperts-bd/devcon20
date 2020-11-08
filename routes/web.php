@@ -23,6 +23,9 @@ Route::post('get/ticket', 'TicketController@storeAttendee')->name('buy.ticket.po
 Route::get('attendee/{uuid}/verify', 'TicketController@verifyAttendee')->name('attendee.verify');
 Route::get('attendee/{uuid}/attend', 'TicketController@approveAttendance')->name('attendee.attend');
 Route::get('attendee/search', 'TicketController@searchAttendee')->name('attendee.search');
+Route::get('attendee/{uuid}/update', 'TicketController@showAttendeeForm')->name('attendee.update.form.show');
+Route::post('attendee/{uuid}/update', 'TicketController@updateAttendee')->name('attendee.update.form.post');
+
 
 Route::get('attendee/{email}', 'TicketController@getAttendeeByEmail')->name('attendee.search.email');
 
