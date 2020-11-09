@@ -13,4 +13,6 @@ Route::group([
 ], function () { // custom admin routes
     Route::crud('attendee', 'AttendeeCrudController');
     Route::crud('payment', 'PaymentCrudController');
+    Route::crud('opening', 'OpeningCrudController');
+    Route::get('/opening/attendee/{id}', 'OpeningCrudController@setAttendAt')->name('set.attend_at');
 }); // this should be the absolute last line of this file
