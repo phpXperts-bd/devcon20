@@ -30,9 +30,9 @@ echo "### Creating dummy certificate for $domains ..."
 path="/etc/letsencrypt/live/$domains"
 mkdir -p $path
 openssl req -x509 -nodes -newkey rsa:$rsa_key_size -days 1\
-    -keyout '$path/privkey.pem' \
-    -out '$path/fullchain.pem' \
-    -subj '/CN=localhost'
+    -keyout $path/privkey.pem \
+    -out $path/fullchain.pem \
+    -subj /CN=localhost
 certbot
 echo
 
