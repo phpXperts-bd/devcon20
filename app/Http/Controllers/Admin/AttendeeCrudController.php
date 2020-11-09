@@ -7,6 +7,7 @@ use App\Jobs\SendEmailJob;
 use App\Jobs\SendSmsJob;
 use App\Mail\SuccessfullyCreateAttendee;
 use App\Mail\ThanksForJoining;
+use App\Support\Utility;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,9 +23,11 @@ class AttendeeCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
+    use Utility;
 
     public function setup()
     {
+        $this->checkAdmin();
         $this->crud->setModel('App\Models\Attendee');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/attendee');
         $this->crud->setEntityNameStrings('attendee', 'attendees');
