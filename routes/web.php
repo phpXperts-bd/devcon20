@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Auth;
+
 Route::view('/', 'angularbd.app')->name('angularbd.index');
 
 Route::get('get/ticket', 'TicketController@index')->name('buy.ticket');
@@ -20,9 +22,24 @@ Route::get('register/volunteer', 'TicketController@showOtherRegistration')->name
 
 Route::post('get/ticket', 'TicketController@storeAttendee')->name('buy.ticket.post');
 
+//Route::middleware('guest')->get('/attendee/login', 'TicketController@showLoginForm')->name('attendee.login.form');
+//Route::middleware('guest')->post('/attendee/login', 'TicketController@attendeeSignIn')->name('attendee.login.post');
+//Route::middleware('auth')->get('attendee/update', 'TicketController@showAttendeeForm')->name('attendee.update.form.show');
+//Route::middleware('auth')->post('attendee/update', 'TicketController@updateAttendee')->name('attendee.update.form.post');
+//Route::get('/attendee/logout', function() {
+//    Auth::logout();
+//    return redirect('/');
+//})->name('attendee.logout');
+Route::get('/send-profile-link', 'TicketController@sendProfileUpdateForm')->name('attendee.profile.update.form');
+Route::post('/send-profile-link', 'TicketController@sendProfileLink')->name('attendee.send.profile.link');
+Route::get('attendee/{code}/update', 'TicketController@showAttendeeForm')->name('attendee.update.form.show');
+Route::post('attendee/{code}/update', 'TicketController@updateAttendee')->name('attendee.update.form.post');
+
+
 Route::get('attendee/{uuid}/verify', 'TicketController@verifyAttendee')->name('attendee.verify');
 Route::get('attendee/{uuid}/attend', 'TicketController@approveAttendance')->name('attendee.attend');
 Route::get('attendee/search', 'TicketController@searchAttendee')->name('attendee.search');
+
 
 Route::get('attendee/{email}', 'TicketController@getAttendeeByEmail')->name('attendee.search.email');
 
@@ -44,3 +61,36 @@ Route::get('un-paid-sms', function () {
     }
 });
 
+Route::get('/upload/attendees', function () {
+    $attendee =  array_map('str_getcsv', file(storage_path('data/attendees.csv')));
+    $sponsors =  array_map('str_getcsv', file(storage_path('data/sponsor.csv')));
+    $guests = array_map('str_getcsv', file(storage_path('data/guest.csv')));
+    unset($attendee[0]);
+    unset($sponsors[0]);
+    unset($guests[0]);
+
+    $attendees = array_merge([], $attendee, $sponsors, $guests);
+
+    foreach ($attendees as $attendee) {
+        $model = new \App\Models\Attendee();
+        $typeMap = [
+            'Attendee' => 1,
+            'Guest' => 2,
+            'Sponsor' => 4
+        ];
+
+        $model->create([
+            'type' => $typeMap[$attendee[0]],
+            'name' => $attendee[1],
+            'email' => $attendee[2],
+            'mobile' => $attendee[3],
+            'misc' => [
+                'tshirt' => $attendee[4]
+            ],
+            'is_paid' => $typeMap[$attendee[0]] == 1 ? true: false
+        ]);
+    }
+
+    echo "done";
+
+});
