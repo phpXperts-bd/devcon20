@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Enums\PaymentStatus;
 use App\Http\Requests\AttendeeRequest;
+use App\Jobs\SendEmailJob;
+use App\Mail\SendProfileUpdateLink;
 use App\Models\Attendee;
 use App\Models\Payment;
 use App\Enums\AttendeeType;
@@ -11,7 +13,11 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Validator;
+
 //use Shipu\Aamarpay\Facades\Aamarpay;
 
 class TicketController extends Controller
@@ -313,5 +319,107 @@ class TicketController extends Controller
             return $this->redirectToIndex("Attendee is not available!", 'error');
         }
         return view('angularbd.ticket-payment', compact('attendee'));
+    }
+
+    public function showLoginForm() {
+        $attendeeType = AttendeeType::GUEST;
+
+        return view('angularbd.login', compact('attendeeType'));
+    }
+
+    public function sendProfileUpdateForm()
+    {
+        $attendeeType = AttendeeType::GUEST;
+
+        return view('angularbd.update_link', compact('attendeeType'));
+    }
+
+    public function sendProfileLink(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => ['required', 'string', 'exists:attendees,email']
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $attendee = Attendee::where('email', $request->input('email'))->first();
+
+        try {
+            dispatch(new SendEmailJob($attendee, new SendProfileUpdateLink($attendee)));
+//            Mail::to($attendee->email)->send(new SendProfileUpdateLink($attendee));
+            toast('Successfully sent! Check your mail.');
+        } catch (\Exception $exception) {
+            toast('Something went wrong! Please try again', 'warning');
+        }
+
+        return back();
+    }
+
+    public function attendeeSignIn(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'hash_code' => ['required', 'string', 'min:20']
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $attendee = Attendee::where('hash_code', $request->input('hash_code'))->first();
+
+        if (blank($attendee)) {
+            toast('Invalid hashcode!', 'warning');
+            return back();
+        }
+
+        Auth::loginUsingId($attendee->id);
+
+        return redirect()->route('attendee.update.form.show');
+    }
+
+    public function showAttendeeForm($code) {
+
+        $attendeeType = AttendeeType::GUEST;
+
+        $attendee = Attendee::where('hash_code', $code)->first();
+
+        return view('angularbd.buy-ticket-edit', compact('attendeeType', 'attendee'));
+    }
+
+    public function updateAttendee($code, Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'name' => ['required', 'string'],
+            'profession' => ['required', 'string'],
+            'social_profile_url' => ['required', 'url'],
+            'address_line_1' => ['nullable', 'string'],
+            'address_line_2' => ['nullable', 'string'],
+            'city' => ['nullable', 'string'],
+            'district' => ['nullable', 'string']
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $attendee = Attendee::where('hash_code', $code)->first();
+
+        if (blank($attendee)) {
+            abort(404);
+        }
+
+        foreach ($validator->validated() as $column => $value) {
+            $attendee->{$column} = $value;
+        }
+
+        try {
+            $attendee->save();
+            toast('Update successfully!', 'success');
+        } catch (\Exception $ex) {
+            toast('Not updated!', 'warning');
+        }
+
+        return back();
     }
 }
