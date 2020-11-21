@@ -61,3 +61,36 @@ Route::get('un-paid-sms', function () {
     }
 });
 
+Route::get('/upload/attendees', function () {
+    $attendee =  array_map('str_getcsv', file(storage_path('data/attendees.csv')));
+    $sponsors =  array_map('str_getcsv', file(storage_path('data/sponsor.csv')));
+    $guests = array_map('str_getcsv', file(storage_path('data/guest.csv')));
+    unset($attendee[0]);
+    unset($sponsors[0]);
+    unset($guests[0]);
+
+    $attendees = array_merge([], $attendee, $sponsors, $guests);
+
+    foreach ($attendees as $attendee) {
+        $model = new \App\Models\Attendee();
+        $typeMap = [
+            'Attendee' => 1,
+            'Guest' => 2,
+            'Sponsor' => 4
+        ];
+
+        $model->create([
+            'type' => $typeMap[$attendee[0]],
+            'name' => $attendee[1],
+            'email' => $attendee[2],
+            'mobile' => $attendee[3],
+            'misc' => [
+                'tshirt' => $attendee[4]
+            ],
+            'is_paid' => $typeMap[$attendee[0]] == 1 ? true: false
+        ]);
+    }
+
+    echo "done";
+
+});
