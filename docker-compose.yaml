@@ -18,9 +18,11 @@ services:
   certbot:
     image: certbot/certbot
     volumes:
+      - .:/var/www/app
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     container_name: certbot   
+    command: certonly --webroot --webroot-path=/var/www/app/public --email mahtonu@gmail.com --agree-tos --no-eff-email --force-renewal -d phpxperts.net -d www.phpxperts.net
 
   database:
     image: mysql:5.7
