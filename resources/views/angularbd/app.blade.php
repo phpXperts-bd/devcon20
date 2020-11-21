@@ -7,7 +7,7 @@
 
         @include('angularbd.partials.speakers')
 
-{{--        @include('angularbd.partials.sessions')--}}
+        @include('angularbd.partials.sessions')
 
         @include('angularbd.partials.venue')
 
