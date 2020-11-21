@@ -22,15 +22,18 @@ Route::get('register/volunteer', 'TicketController@showOtherRegistration')->name
 
 Route::post('get/ticket', 'TicketController@storeAttendee')->name('buy.ticket.post');
 
-Route::middleware('guest')->get('/attendee/login', 'TicketController@showLoginForm')->name('attendee.login.form');
-Route::middleware('guest')->post('/attendee/login', 'TicketController@attendeeSignIn')->name('attendee.login.post');
-Route::middleware('auth')->get('attendee/update', 'TicketController@showAttendeeForm')->name('attendee.update.form.show');
-Route::middleware('auth')->post('attendee/update', 'TicketController@updateAttendee')->name('attendee.update.form.post');
-Route::get('/attendee/logout', function() {
-    Auth::logout();
-    return redirect('/');
-})->name('attendee.logout');
-
+//Route::middleware('guest')->get('/attendee/login', 'TicketController@showLoginForm')->name('attendee.login.form');
+//Route::middleware('guest')->post('/attendee/login', 'TicketController@attendeeSignIn')->name('attendee.login.post');
+//Route::middleware('auth')->get('attendee/update', 'TicketController@showAttendeeForm')->name('attendee.update.form.show');
+//Route::middleware('auth')->post('attendee/update', 'TicketController@updateAttendee')->name('attendee.update.form.post');
+//Route::get('/attendee/logout', function() {
+//    Auth::logout();
+//    return redirect('/');
+//})->name('attendee.logout');
+Route::get('/send-profile-link', 'TicketController@sendProfileUpdateForm')->name('attendee.profile.update.form');
+Route::post('/send-profile-link', 'TicketController@sendProfileLink')->name('attendee.send.profile.link');
+Route::get('attendee/{code}/update', 'TicketController@showAttendeeForm')->name('attendee.update.form.show');
+Route::post('attendee/{code}/update', 'TicketController@updateAttendee')->name('attendee.update.form.post');
 
 
 Route::get('attendee/{uuid}/verify', 'TicketController@verifyAttendee')->name('attendee.verify');

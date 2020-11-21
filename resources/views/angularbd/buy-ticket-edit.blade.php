@@ -13,11 +13,11 @@
     @endif
 
     @if($attendeeType == \App\Enums\AttendeeType::SPONSOR || $attendeeType == \App\Enums\AttendeeType::VOLUNTEER || $attendeeType == \App\Enums\AttendeeType::GUEST)
-<h4 class="Meetup__sectionTitle">Delighted to have you here, please update yourself. <small>(<a href="{{ route('attendee.logout') }}">Logout</a>)</small></h4>
+<h4 class="Meetup__sectionTitle">Delighted to have you here, please update yourself.</h4>
     @endif
 
     <p class="Meetup__sectionCopy"></p>
-    <form class="Meetup__form" action="{{ route('attendee.update.form.post') }}" method="post" id="buyTicket">
+    <form class="Meetup__form" action="{{ route('attendee.update.form.post', ['code' => $attendee->hash_code]) }}" method="post" id="buyTicket">
         @csrf
         <input type="hidden" name="type" value="{{ $attendeeType }}">
         <div class="Field {{ $errors->has('name') ? ' Field--error' : '' }}">

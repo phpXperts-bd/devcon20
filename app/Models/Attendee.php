@@ -47,17 +47,17 @@ class Attendee extends Authenticatable
 
     public function getTshirtAttribute()
     {
-        return array_get($this->misc, 'tshirt', 'N/A');
+        return \Arr::get($this->misc, 'tshirt', 'N/A');
     }
 
     public function getWorkingAttribute()
     {
-        return array_get($this->misc, 'working', 'N/A');
+        return \Arr::get($this->misc, 'working', 'N/A');
     }
 
     public function getInstructionAttribute()
     {
-        return array_get($this->misc, 'instruction', 'N/A');
+        return \Arr::get($this->misc, 'instruction', 'N/A');
     }
 
     public function onModelCreating()
@@ -68,15 +68,20 @@ class Attendee extends Authenticatable
     public function onModelCreated()
     {
         dispatch(new SendEmailJob($this, new SuccessfullyCreateAttendee($this)));
-        if(env('SMS_ENABLED')) {
-            dispatch(new SendSmsJob($this, ($this->type==\App\Enums\AttendeeType::ATTENDEE?env('CONFIRM_MESSAGE'):env('GUEST_MESSAGE'))));
+        if (env('SMS_ENABLED')) {
+            dispatch(new SendSmsJob($this, ($this->type == \App\Enums\AttendeeType::ATTENDEE ? env('CONFIRM_MESSAGE') : env('GUEST_MESSAGE'))));
         }
     }
 
     public function openPaymentPage()
     {
         if (!$this->is_paid) {
-            return '<a class="btn btn-sm btn-link" target="_blank" href="'. route('ticket.payment', ['attendee' => $this->id]).'" data-toggle="tooltip" title="Payment"><i class="fa fa-money"></i> Payment</a>';
+            return '<a class="btn btn-sm btn-link" target="_blank" href="' . route('ticket.payment', ['attendee' => $this->id]) . '" data-toggle="tooltip" title="Payment"><i class="fa fa-money"></i> Payment</a>';
         }
+    }
+
+    public function sendBulkEmailForProfileUpdate()
+    {
+        return '<a class="btn btn-primary " target="_blank" href="'. route('attendee.bulkProfileLink') .'" data-toggle="tooltip" title="Payment"><i class="fa fa-money"></i> Send Profile Update Link</a>';
     }
 }
