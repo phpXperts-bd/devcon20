@@ -92,6 +92,11 @@ class OpeningCrudController extends CrudController
                 'type' => 'datetime',
                 'label' => 'Attend At'
             ],
+            [
+                'name' => 'hash_code',
+                'type' => 'text',
+                'label' => 'Hash Code'
+            ],
         ]);
     }
 
