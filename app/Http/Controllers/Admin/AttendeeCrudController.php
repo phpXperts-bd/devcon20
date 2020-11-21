@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\AttendeeRequest;
 use App\Jobs\SendEmailJob;
 use App\Jobs\SendSmsJob;
+use App\Mail\SendProfileUpdateLink;
 use App\Mail\SuccessfullyCreateAttendee;
 use App\Mail\ThanksForJoining;
+use App\Models\Attendee;
 use App\Support\Utility;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +36,23 @@ class AttendeeCrudController extends CrudController
 
         $this->crud->enableExportButtons();
         $this->crud->addButtonFromModelFunction('line', 'open_payment_page', 'openPaymentPage', 'beginning');
+        $this->crud->addButton('top', 'bulk_profile_link', 'view', 'crud::buttons.bulk_profile_link');
+
+        $this->crud->allowAccess('bulkProfileLink');
+
+    }
+
+    public function sendProfileLinkToAll()
+    {
+        $this->crud->applyConfigurationFromSettings('bulkProfileLink');
+        $this->crud->hasAccessOrFail('bulkProfileLink');
+
+        $attendees = Attendee::all();
+
+        foreach ($attendees as $attendee) {
+            dispatch(new SendEmailJob($attendee, new SendProfileUpdateLink($attendee)));
+        }
+
     }
 
     protected function setupListOperation()
@@ -271,6 +290,13 @@ class AttendeeCrudController extends CrudController
            'as' => $routeName.'.bulkSendSmsForPay',
            'uses' => $controller.'@bulkSendSmsForPay',
            'operation' => 'bulkSendSmsForPay',
+        ]);
+
+
+        Route::post($segment.'/bulk-profile-link', [
+            'as' => $routeName . '.' . 'bulkProfileLink',
+            'uses' => $controller.'@sendProfileLinkToAll',
+            'operation' => 'bulkProfileLink'
         ]);
     }
 

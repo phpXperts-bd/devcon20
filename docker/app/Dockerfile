@@ -1,12 +1,12 @@
 FROM debian:stretch
 LABEL Maintainer="M A Hossain Tonu <mahtonu@vantage.com>" \
-Description="phpXperts container with Nginx 1.13 & PHP-FPM 7.3 based on Debian."
+Description="phpXperts container with Nginx 1.13 & PHP-FPM 7.4 based on Debian."
 
 #
 ENV DEBIAN_FRONTEND noninteractive
 ENV NGINX_VERSION 1.13.4-1~stretch
-ENV php_conf /etc/php/7.3/fpm/php.ini
-ENV fpm_conf /etc/php/7.3/fpm/pool.d/www.conf
+ENV php_conf /etc/php/7.4/fpm/php.ini
+ENV fpm_conf /etc/php/7.4/fpm/pool.d/www.conf
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 #set to EST time
@@ -62,12 +62,12 @@ ADD ./phpxperts.conf /etc/nginx/conf.d/phpxperts.conf
 
 # Install PHP and Libraries
 RUN apt-get install --no-install-recommends --no-install-suggests -q -y \
-    php7.3-fpm php7.3-cli php7.3-dev php7.3-common \
-    php7.3-json php7.3-opcache php7.3-readline php7.3-mbstring php7.3-curl php7.3-memcached \
-    php7.3-imagick php7.3-mysql php7.3-zip php7.3-pgsql php7.3-intl php7.3-xml \
-    php7.3-enchant php7.3-gd php7.3-pspell php7.3-pgsql \
-    php7.3-soap php7.3-tidy php-xdebug php7.3-recode php7.3-apcu php7.3-apcu-bc php7.3-xml \
-    php7.3-phpdbg php-http-request2 php7.3-imap
+    php7.4-fpm php7.4-cli php7.4-dev php7.4-common \
+    php7.4-json php7.4-opcache php7.4-readline php7.4-mbstring php7.4-curl php7.4-memcached \
+    php7.4-imagick php7.4-mysql php7.4-zip php7.4-pgsql php7.4-intl php7.4-xml \
+    php7.4-enchant php7.4-gd php7.4-pspell php7.4-pgsql \
+    php7.4-soap php7.4-tidy php-xdebug php7.4-apcu php7.4-apcu-bc php7.4-xml \
+    php7.4-phpdbg php-http-request2 php7.4-imap
 
 # Override php's default ini
 RUN rm -rf ${php_conf}
@@ -78,7 +78,7 @@ RUN sed -i -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" ${php_conf} && \
 sed -i -e "s/upload_max_filesize\s*=\s*2M/upload_max_filesize = 100M/g" ${php_conf} && \
 sed -i -e "s/post_max_size\s*=\s*8M/post_max_size = 100M/g" ${php_conf} && \
 sed -i -e "s/variables_order = \"GPCS\"/variables_order = \"EGPCS\"/g" ${php_conf} && \
-sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php/7.3/fpm/php-fpm.conf && \
+sed -i -e "s/;daemonize\s*=\s*yes/daemonize = no/g" /etc/php/7.4/fpm/php-fpm.conf && \
 sed -i -e "s/;catch_workers_output\s*=\s*yes/catch_workers_output = yes/g" ${fpm_conf} && \
 sed -i -e "s/pm.max_children = 5/pm.max_children = 50/g" ${fpm_conf} && \
 sed -i -e "s/pm.start_servers = 2/pm.start_servers = 5/g" ${fpm_conf} && \
@@ -108,6 +108,6 @@ RUN source ~/.profile
 COPY ./crontab /etc/cron.d/devcon20-cron
 
 RUN curl -sS https://getcomposer.org/installer | \
-/usr/bin/php7.3 -- --install-dir=/usr/bin/ --filename=composer
+php -- --install-dir=/usr/bin/ --filename=composer --version=2.0.0
 
 CMD ["/init.sh"]
