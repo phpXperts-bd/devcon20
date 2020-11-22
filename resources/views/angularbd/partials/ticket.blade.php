@@ -76,6 +76,33 @@
                 <p class="Field__validation">{{ $errors->first('misc.tshirt') }}</p>
             @endif
         </div>
+        <div class="Field {{ $errors->has('address_line_1') ? ' Field--error' : '' }}">
+            <label class="Field__label">Address Line 1</label>
+            <div class="Field__control">
+                <input class="Field__input" value="{{ old('address_line_1') }}" name="address_line_1" id="address_line_1" type="text" placeholder="Address Line 1">
+            </div>
+        </div>
+
+        <div class="Field {{ $errors->has('address_line_2') ? ' Field--error' : '' }}">
+            <label class="Field__label">Address Line 2</label>
+            <div class="Field__control">
+                <input class="Field__input" value="{{ old('address_line_2') }}"  name="address_line_2" id="address_line_2" type="text" placeholder="Address Line 2">
+            </div>
+        </div>
+
+        <div class="Field {{ $errors->has('city') ? ' Field--error' : '' }}">
+            <label class="Field__label">City</label>
+            <div class="Field__control">
+                <input class="Field__input" value="{{ old('city') }}" name="city" id="city" type="text" placeholder="City">
+            </div>
+        </div>
+
+        <div class="Field {{ $errors->has('district') ? ' Field--error' : '' }}">
+            <label class="Field__label">District</label>
+            <div class="Field__control">
+                <input class="Field__input" value="{{ old('district') }}" name="district" id="district" type="text" placeholder="District">
+            </div>
+        </div>
         <div class="Field">
           <label class="Field__label">Additional note</label>
           <div class="Field__control Field__control--textarea">

@@ -30,7 +30,12 @@ class Attendee extends Model
         'social_profile_url',
         'is_paid',
         'misc',
-        'attend_at'
+        'attend_at',
+        'address_line_1',
+        'address_line_2',
+        'address_line_3',
+        'city',
+        'district',
     ];
 
     protected $casts = [
@@ -65,10 +70,10 @@ class Attendee extends Model
 
     public function onModelCreated()
     {
-//        dispatch(new SendEmailJob($this, new SuccessfullyCreateAttendee($this)));
-//        if(env('SMS_ENABLED')) {
-//            dispatch(new SendSmsJob($this, ($this->type==\App\Enums\AttendeeType::ATTENDEE?env('CONFIRM_MESSAGE'):env('GUEST_MESSAGE'))));
-//        }
+        dispatch(new SendEmailJob($this, new SuccessfullyCreateAttendee($this)));
+        if(env('SMS_ENABLED')) {
+            dispatch(new SendSmsJob($this, ($this->type==\App\Enums\AttendeeType::ATTENDEE?env('CONFIRM_MESSAGE'):env('GUEST_MESSAGE'))));
+        }
     }
 
     public function openPaymentPage()
