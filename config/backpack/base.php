@@ -20,7 +20,7 @@ return [
     // ----
 
     // Project name. Shown in the window title.
-    'project_name' => 'Angular-BD Meetup',
+    'project_name' => 'phpXperts DevCon 2020',
 
     // Content of the HTML meta robots tag to prevent indexing and link following
     'meta_robots_content' => 'noindex, nofollow',

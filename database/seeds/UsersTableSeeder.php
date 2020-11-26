@@ -11,10 +11,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\BackpackUser::create([
-            'name' => 'Mr Admin',
-            'email' => 'admin@example.com',
-            'password' => bcrypt('123456')
-        ]);
+        \App\Models\BackpackUser::create(['name' => 'Mr Admin', 'email' => 'admin@example.com',  'password' => bcrypt('123456') ]);
     }
 }

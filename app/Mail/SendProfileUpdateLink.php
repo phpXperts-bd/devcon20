@@ -32,7 +32,7 @@ class SendProfileUpdateLink extends Mailable
     public function build()
     {
         $attendee = $this->attendee;
-        return $this->subject('Update Profile Link | DevCon20 | phpXpert')
+        return $this->subject('Add phpXperts DevCon20 gift shipment address')
             ->view('emails.update_profile_link', compact('attendee'));
     }
 }
