@@ -30,3 +30,4 @@ Homestead.json
 /storage/*.key
 
 docker-compose.yaml
+data/certbot/

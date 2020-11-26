@@ -11,6 +11,7 @@ services:
         - .:/var/www/app
         - ./data/certbot/conf:/etc/letsencrypt
         - ./data/certbot/www:/var/www/certbot
+      env_file: '.env'
       container_name: app  
       links:
         - database
