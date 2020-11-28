@@ -6,8 +6,17 @@
     <script>
         if (typeof bulkProfileLink != 'function') {
             function bulkProfileLink(button) {
+                if (typeof crud.checkedItems === 'undefined' || crud.checkedItems.length == 0)
+                {
+                    new Noty({
+                    type: "warning",
+                    text: "<strong>{{ trans('backpack::crud.bulk_no_entries_selected_title') }}</strong><br>{{ trans('backpack::crud.bulk_no_entries_selected_message') }}"
+                    }).show();
 
-                var message = "Are you sure to send profile link?";
+                    return;
+                }
+                
+                var message = ("{{ trans('crud.bulk_profile_link_are_you_sure') }}").replace(":number", crud.checkedItems.length);
                 var button = $(this);
 
                 // show confirm message
@@ -39,11 +48,12 @@
                         $.ajax({
                             url: delete_route,
                             type: 'POST',
+                            data: { entries: crud.checkedItems },
                             success: function(result) {
                                 // Show an alert with the result
                                 new Noty({
                                     type: "success",
-                                    text: "<strong>Successfully Sent!</strong>"
+                                    text: "<strong>{{ trans('crud.bulk_profile_link_success_title') }}</strong><br>"+crud.checkedItems.length+"{{ trans('crud.bulk_profile_link_success_message') }}"
                                 }).show();
 
                                 crud.checkedItems = [];
@@ -53,7 +63,7 @@
                                 // Show an alert with the result
                                 new Noty({
                                     type: "warning",
-                                    text: "<strong>Something went wrong!</strong>"
+                                    text: "<strong>{{ trans('crud.bulk_profile_link_error_title') }}</strong><br>{{ trans('crud.bulk_profile_link_error_message') }}"
                                 }).show();
                             }
                         });

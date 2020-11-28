@@ -47,12 +47,22 @@ class AttendeeCrudController extends CrudController
         $this->crud->applyConfigurationFromSettings('bulkProfileLink');
         $this->crud->hasAccessOrFail('bulkProfileLink');
 
-        $attendees = Attendee::all();
+        // $attendees = Attendee::all();
 
-        foreach ($attendees as $attendee) {
-            dispatch(new SendEmailJob($attendee, new SendProfileUpdateLink($attendee)));
+        // foreach ($attendees as $attendee) {
+        //     dispatch(new SendEmailJob($attendee, new SendProfileUpdateLink($attendee)));
+        // }
+
+        $entries = $this->request->input('entries');
+        $sendProfileLinks = [];
+
+        foreach ($entries as $key => $id) {
+            if ($attendee = $this->crud->model->find($id)) {
+                $sendProfileLinks[] = dispatch(new SendEmailJob($attendee, new SendProfileUpdateLink($attendee)));
+            }
         }
 
+        return $sendProfileLinks;
     }
 
     protected function setupListOperation()
@@ -140,6 +150,37 @@ class AttendeeCrudController extends CrudController
                 'type' => 'datetime',
                 'label' => 'Attend At'
             ],
+            [
+                'name' => 'address_line_1',
+                'type' => 'text',
+                'label' => 'Address 1'
+            ],
+            [
+                'name' => 'address_line_2',
+                'type' => 'text',
+                'label' => 'Address 2'
+            ],
+            [
+                'name' => 'address_line_3',
+                'type' => 'text',
+                'label' => 'Address 3'
+            ],
+            [
+                'name' => 'city',
+                'type' => 'text',
+                'label' => 'City',
+                'searchLogic' => function ($query, $column, $searchTerm) {
+                    $query->orWhere('city', 'like', '%'.$searchTerm.'%');
+                }
+            ],
+            [
+                'name' => 'district',
+                'type' => 'text',
+                'label' => 'District',
+                'searchLogic' => function ($query, $column, $searchTerm) {
+                    $query->orWhere('district', 'like', '%'.$searchTerm.'%');
+                }
+            ],
         ]);
 
         $this->setupFilter();
@@ -187,6 +228,16 @@ class AttendeeCrudController extends CrudController
         trans('attendee_type'),
         function($value) {
             $this->crud->addClause('where', 'type', '=', $value);
+        });
+
+        $this->crud->addFilter([
+            'type' => 'select2',
+            'name' => 'district',
+            'label'=> 'District'
+        ],
+        trans('district'),
+        function($value) {
+            $this->crud->addClause('where', 'district', '=', $value);
         });
     }
 
