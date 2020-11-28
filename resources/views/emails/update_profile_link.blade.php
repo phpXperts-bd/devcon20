@@ -8,6 +8,20 @@
             <p style="Margin-top: 20px;Margin-bottom: 20px;">Please add your address to your registration profile to claim the DevCon'20 gift items.</p>    
             <p style="Margin-top: 20px;Margin-bottom: 20px;">Here is your profile update link. <a href="{{ route('attendee.update.form.show', ['code' => $attendee->hash_code]) }}">Click here</a> to update your profile.</p>
             <p style="Margin-top: 20px;Margin-bottom: 20px;">What is our plan?</p>
+            <p style="Margin-top: 20px;Margin-bottom: 20px;">
+            As you know we have been going through COVID situation with so many challenges, we eagerly waiting like anyone to see the end and it seems like it will pass this year. We hardly see a way to arrange DevCon 2020 physically and as a patron of the event, still you waiting and so we; so here are the plans,
+
+<br>
+-       We do the DevCon’20 at online with all your faborite speakers, a huge preparation and hard work are in progress, the date will be announced soon.
+<br>
+-       We got Pathao as our logistics sponsor this week, so we ship everyone’s (already registered attendees) gift to their home address, gifts are t-shirt as given size, notebook, sticker, messenger bag, all of them got DevCon and Sponsors logo printed.
+<br>
+-       The event will be broadcasted from phpXperts.net website.
+<br>
+-       All the recordings will be published on phpXperts YouTube channel and will be there for reference and learning always.
+<br><br>
+Remember, we never compromised your health safety by postponing the physical event and will be presenting a virtual event that all can enjoy from home.
+            </p>
         </div>
     </div>
 @endsection
