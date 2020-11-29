@@ -35,7 +35,7 @@
         <div class="Field {{ $errors->has('mobile') ? ' Field--error' : '' }}">
           <label class="Field__label">Mobile</label>
           <div class="Field__control">
-            <input class="Field__input" value="{{ $attendee->mobile }}" disabled id="mobile" type="number" placeholder="Enter phone number">
+            <input class="Field__input" value="{{ $attendee->mobile }}" id="mobile" type="number" placeholder="Enter phone number">
           </div>
         </div>
         <div class="Field {{ $errors->has('profession') ? ' Field--error' : '' }}">
