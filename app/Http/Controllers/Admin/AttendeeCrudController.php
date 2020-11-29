@@ -46,14 +46,14 @@ class AttendeeCrudController extends CrudController
     {
         $this->crud->applyConfigurationFromSettings('bulkProfileLink');
         $this->crud->hasAccessOrFail('bulkProfileLink');
-
+        $request = $this->crud->getRequest();
         // $attendees = Attendee::all();
 
         // foreach ($attendees as $attendee) {
         //     dispatch(new SendEmailJob($attendee, new SendProfileUpdateLink($attendee)));
         // }
 
-        $entries = $this->request->input('entries');
+        $entries = $request->input('entries');
         $sendProfileLinks = [];
 
         foreach ($entries as $key => $id) {
@@ -118,21 +118,6 @@ class AttendeeCrudController extends CrudController
                 ]
             ],
             [
-                'name' => 'instruction',
-                'type' => 'text',
-                'label' => 'Instruction',
-            ],
-            [
-                'name' => 'uuid',
-                'type' => 'text',
-                'label' => 'UUID'
-            ],
-            [
-                'name' => 'attend_at',
-                'type' => 'datetime',
-                'label' => 'Attend At'
-            ],
-            [
                 'name' => 'address_line_1',
                 'type' => 'text',
                 'label' => 'Address 1'
@@ -141,11 +126,6 @@ class AttendeeCrudController extends CrudController
                 'name' => 'address_line_2',
                 'type' => 'text',
                 'label' => 'Address 2'
-            ],
-            [
-                'name' => 'address_line_3',
-                'type' => 'text',
-                'label' => 'Address 3'
             ],
             [
                 'name' => 'city',
@@ -162,7 +142,7 @@ class AttendeeCrudController extends CrudController
                 'searchLogic' => function ($query, $column, $searchTerm) {
                     $query->orWhere('district', 'like', '%'.$searchTerm.'%');
                 }
-            ],
+            ]
         ]);
 
         $this->setupFilter();
@@ -271,6 +251,26 @@ class AttendeeCrudController extends CrudController
                 'name' => 'is_paid',
                 'type' => 'checkbox',
                 'label' => 'Is Paid?'
+            ],
+            [
+                'name' => 'address_line_1',
+                'type' => 'text',
+                'label' => 'Address 1'
+            ],
+            [
+                'name' => 'address_line_2',
+                'type' => 'text',
+                'label' => 'Address 2'
+            ],
+            [
+                'name' => 'city',
+                'type' => 'text',
+                'label' => 'City'
+            ],
+            [
+                'name' => 'district',
+                'type' => 'text',
+                'label' => 'District'
             ]
         ]);
     }
@@ -288,7 +288,7 @@ class AttendeeCrudController extends CrudController
                     'format' => 'dd-mm-yyyy',
                     'language' => 'en',
                     'timePicker' => true
-                ],
+                ]
             ]
         ]);
     }
@@ -372,8 +372,8 @@ class AttendeeCrudController extends CrudController
     {
         $this->crud->applyConfigurationFromSettings('bulkTicket');
         $this->crud->hasAccessOrFail('bulkTicket');
-
-        $entries = $this->request->input('entries');
+        $request = $this->crud->getRequest();
+        $entries = $request->input('entries');
         $sendTickets = [];
 
         foreach ($entries as $key => $id) {
@@ -395,7 +395,8 @@ class AttendeeCrudController extends CrudController
         $this->crud->applyConfigurationFromSettings('bulkSendEmailForPay');
         $this->crud->hasAccessOrFail('bulkSendEmailForPay');
 
-        $entries = $this->request->input('entries');
+        $request = $this->crud->getRequest();
+        $entries = $request->input('entries');
         $sendEmailForPay = [];
 
 
@@ -418,7 +419,8 @@ class AttendeeCrudController extends CrudController
         $this->crud->applyConfigurationFromSettings('bulkSendSmsForPay');
         $this->crud->hasAccessOrFail('bulkSendSmsForPay');
 
-        $entries = $this->request->input('entries');
+        $request = $this->crud->getRequest();
+        $entries = $request->input('entries');
         $sendSmsForPay = [];
 
 
