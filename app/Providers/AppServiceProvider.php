@@ -25,6 +25,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(UrlGenerator $url)
     {
-        $url->forceScheme(env('HTTP_PROTOCOL', 'https'));
+        $url->forceScheme(env('HTTP_PROTOCOL', 'http'));
     }
 }

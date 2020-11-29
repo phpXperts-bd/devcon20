@@ -118,27 +118,9 @@ class AttendeeCrudController extends CrudController
                 ]
             ],
             [
-                'name' => 'working',
-                'type' => 'text',
-                'label' => 'Working',
-            ],
-            [
                 'name' => 'instruction',
                 'type' => 'text',
                 'label' => 'Instruction',
-            ],
-            [
-                'name' => 'profession',
-                'type' => 'text',
-                'label' => 'Profession',
-                'searchLogic' => function ($query, $column, $searchTerm) {
-                    $query->orWhere('profession', 'like', '%'.$searchTerm.'%');
-                }
-            ],
-            [
-                'name' => 'social_profile_url',
-                'type' => 'text',
-                'label' => 'Social Profile Url'
             ],
             [
                 'name' => 'uuid',
