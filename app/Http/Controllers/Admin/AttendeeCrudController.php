@@ -46,14 +46,14 @@ class AttendeeCrudController extends CrudController
     {
         $this->crud->applyConfigurationFromSettings('bulkProfileLink');
         $this->crud->hasAccessOrFail('bulkProfileLink');
-        $request = $this->crud->getRequest();
+        //$request = $this->crud->getRequest();
         // $attendees = Attendee::all();
 
         // foreach ($attendees as $attendee) {
         //     dispatch(new SendEmailJob($attendee, new SendProfileUpdateLink($attendee)));
         // }
 
-        $entries = $request->input('entries');
+        $entries = $this->request->input('entries');
         $sendProfileLinks = [];
 
         foreach ($entries as $key => $id) {
@@ -372,8 +372,7 @@ class AttendeeCrudController extends CrudController
     {
         $this->crud->applyConfigurationFromSettings('bulkTicket');
         $this->crud->hasAccessOrFail('bulkTicket');
-        $request = $this->crud->getRequest();
-        $entries = $request->input('entries');
+        $entries = $this->request->input('entries');
         $sendTickets = [];
 
         foreach ($entries as $key => $id) {
@@ -395,8 +394,7 @@ class AttendeeCrudController extends CrudController
         $this->crud->applyConfigurationFromSettings('bulkSendEmailForPay');
         $this->crud->hasAccessOrFail('bulkSendEmailForPay');
 
-        $request = $this->crud->getRequest();
-        $entries = $request->input('entries');
+        $entries = $this->request->input('entries');
         $sendEmailForPay = [];
 
 
@@ -419,8 +417,7 @@ class AttendeeCrudController extends CrudController
         $this->crud->applyConfigurationFromSettings('bulkSendSmsForPay');
         $this->crud->hasAccessOrFail('bulkSendSmsForPay');
 
-        $request = $this->crud->getRequest();
-        $entries = $request->input('entries');
+        $entries = $this->request->input('entries');
         $sendSmsForPay = [];
 
 

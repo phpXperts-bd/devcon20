@@ -7,7 +7,7 @@
                 Hello, {{ $attendee->name }}</h1>
             <p style="Margin-top: 20px;Margin-bottom: 20px;">Please add your address to your registration profile to claim the DevCon'20 gift items.</p>    
             <p style="Margin-top: 20px;Margin-bottom: 20px;">Here is your profile update link. <a href="{{ route('attendee.update.form.show', ['code' => $attendee->hash_code]) }}">Click here</a> to update your profile.</p>
-            <p style="Margin-top: 20px;font-style: normal;font-weight: normal;color: #14161e;font-size: 22px;line-height: 31px;font-family: Bitter,Georgia,serif;">What is our plan?</p>
+            <p style="Margin-top: 20px;font-style: normal;font-weight: normal;color: #14161e;font-size: 22px;line-height: 31px;font-family: Bitter,Georgia,serif;">DevCon is going to take place at online</p>
             <p style="Margin-bottom: 20px;">
             As you know we have been going through COVID situation with so many challenges, we eagerly waiting like anyone to see the end and it seems like it will pass this year. 
             <br>
