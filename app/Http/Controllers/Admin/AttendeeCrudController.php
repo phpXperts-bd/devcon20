@@ -191,16 +191,6 @@ class AttendeeCrudController extends CrudController
         function($value) {
             $this->crud->addClause('where', 'type', '=', $value);
         });
-
-        $this->crud->addFilter([
-            'type' => 'select2',
-            'name' => 'district',
-            'label'=> 'District'
-        ],
-        trans('district'),
-        function($value) {
-            $this->crud->addClause('where', 'district', '=', $value);
-        });
     }
 
     protected function setupCreateOperation()
