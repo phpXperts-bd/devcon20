@@ -1170,7 +1170,7 @@
                             <!--[if (mso)|(IE)]>
                             <table align="center" cellpadding="0" cellspacing="0" role="presentation">
                                 <tr class="layout-fixed-width" style="background-color: #ffffff;">
-                                    @foreach(range($start, 5) as $number)
+                                    @foreach(range($start, 6) as $number)
                                     @if($number > 2 && $row == 1) @break @endif
                                     <td style="width: 200px" valign="top" class="w160"></table><![endif]-->
                             <div class="column"

@@ -14,6 +14,6 @@
 <meta property="og:description"
       content="Discuss & share your issues, ideas, tips & tricks with other developers at phpXperts DevCon 2020. Be a part of the community to grow all along."/>
 <meta property="og:image"
-      content="{{ asset('phpxperts/images/social-media-promo.jpg') }}"/>
+      content="{{ asset('phpxperts/images/event_banner.png') }}"/>
 {{--<link rel="stylesheet" href="./assets/styles/main.css">--}}
 <link rel="stylesheet" href="{{ asset('phpxperts/styles/main.css') }}">
