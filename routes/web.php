@@ -94,3 +94,20 @@ Route::get('/upload/attendees', function () {
     echo "done";
 
 });
+
+Route::group([
+    'prefix'     => 'devcon20-live',
+    'namespace'  => 'Devcon20',
+], function () { 
+    Route::view('/', 'devcon20.app')->name('devcon20.index');
+    Route::get('session/{name}', 'LiveController@index')->name('live.session.title');
+    Route::get('speakers', 'LiveController@index')->name('live.session.title');
+
+    Route::middleware('guest')->get('/user/login', 'LiveController@showLoginForm')->name('live.login.form');
+    Route::middleware('guest')->post('/user/login', 'LiveController@attendeeSignIn')->name('live.login.post');
+    Route::get('/logout', function() {
+        Auth::logout();
+        return redirect('/');
+    })->name('live.logout');
+
+});
