@@ -1,0 +1,104 @@
+#SideMenu
+  z-index: 101
+  +tablet
+    opacity: 1
+    visibility: visible
+    position: absolute
+    bottom: auto
+    z-index: 0
+    pointer-events: none
+  .modal__overlay
+    background-color: rgba($green, 0.6)
+    +tablet
+      display: none
+      opacity: 0
+      visibility: hidden
+  .modal__content
+    background-color: $blue
+    margin-left: auto
+    max-width: 280px
+    height: 100%
+    transform: translateX(100%)
+    transition: all $speed*2 ease
+    +tablet
+      +container-wide
+      transform: translateX(0%)
+      background-color: rgba($blue, 0)
+      pointer-events: none
+      height: 124px
+      display: flex
+      align-items: center
+      padding-left: 208px
+    +desktop
+      padding-left: 300px
+
+  .modal__closeTop
+    z-index: 10
+    pointer-events: auto
+    +tablet
+      display: none
+      opacity: 0
+      visibility: hidden
+  &.modal--open
+    .modal__content
+      transform: translateX(0%)
+      transition: all $speed*3 ease
+
+nav
+  position: relative
+  padding-top: 120px
+  padding-bottom: 60px
+  overflow: hidden
+  &::before
+    content: "Quick links"
+    position: absolute
+    top: 0
+    left: 0
+    font-size: 14px
+    color: rgba($white, 0.4)
+    margin-left: 56px
+    margin-top: 60px
+    +tablet
+      display: none
+      opacity: 0
+      visibility: hidden
+  +tablet
+    padding-top: 0
+    padding-bottom: 0
+    display: inline-flex
+    flex-flow: row wrap
+    padding-left: 80px
+  a
+    +button
+    justify-content: flex-start
+    padding-left: 56px
+    padding-right: 56px
+    width: 100%
+    color: $green
+    font-size: 2.4em
+    margin-bottom: 10px
+    +tablet
+      margin-bottom: 0
+      width: auto
+      font-size: 1.6em
+      height: 44px
+      pointer-events: auto
+      padding-left: 0
+      padding-right: 0
+      color: $white
+    &:not(:last-child)
+      margin-right: 40px
+
+    &.active
+      &::after
+        content: ""
+        position: absolute
+        bottom: 42%
+        left: 0
+        width: 40px
+        height: 2px
+        background-color: $green
+        +tablet
+          height: 1px
+          width: 100%
+          bottom: 0

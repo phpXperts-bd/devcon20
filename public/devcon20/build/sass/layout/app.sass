@@ -1,0 +1,80 @@
+// app
+// .header
+//   &::before
+//     content: ""
+//     position: absolute
+//     height: 100%
+//     width: 1000px
+//     background-color: rgba($white, 0.2)
+//     left: 50%
+//     top: 0
+//     transform: translateX(-50%)
+//   &::after
+//     content: ""
+//     position: absolute
+//     height: 100%
+//     width: 780px
+//     background-color: rgba($white, 0.2)
+//     left: 50%
+//     top: 0
+//     transform: translateX(-50%)
+
+.pageHeader
+  position: relative
+  background-color: $blue
+  padding-bottom: 10px
+  +tablet
+    padding-top: 40px
+    padding-bottom: 50px
+  &__container
+    +container
+    padding-left: 20px
+    padding-right: 20px
+    +tablet
+      padding-left: 30px
+      padding-right: 30px
+  &__rows
+  &__title
+    font-size: 4em
+    font-weight: $weight-bold
+    color: $green
+    +tablet
+      font-size: 7em
+
+.footer
+  position: relative
+  &__container
+    +container
+  &__row
+    border-top: 1px solid #ebebeb
+    display: flex
+    flex-direction: row 
+    justify-content: space-between
+    align-items: center
+    padding-top: 20px
+    padding-bottom: 40px
+    margin-top: 60px
+  .social
+    display: flex
+    flex-direction: row
+    justify-content: center
+    &__link
+      +button
+      // background-color: rgba($red, 0.1)
+      width: 32px
+      height: 32px
+      background-size: cover
+      background-position: center
+      background-repeat: no-repeat
+      &:not(:last-child)
+        margin-right: 10px
+
+  .crafted
+    font-size: 1.4em
+    color: #999
+    a
+      position: relative
+      text-decoration: none
+      color: inherit
+      &:hover
+        text-decoration: underline

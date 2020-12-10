@@ -1,0 +1,77 @@
+.eventSponsor
+  position: relative
+  padding-bottom: 100px
+  &__container
+    +container
+  &__row
+    position: relative
+
+  &__list
+
+  &__item
+    position: relative
+    padding-top: 40px
+    padding-bottom: 40px
+    +tablet
+      padding-top: 70px
+      padding-bottom: 70px
+    &:not(:last-child)
+      border-bottom: 1px solid #ebebeb
+
+  .sopnsor
+    position: relative
+    display: flex
+    flex-direction: column
+    +tablet
+      flex-direction: row
+    &__logo
+      background-size: cover
+      background-position: center
+      background-repeat: no-repeat
+      margin-bottom: 10px
+      +tablet
+        position: absolute
+        left: 0
+        top: 0
+      &.wedevs,
+      &.joomshaper
+        height: 60px
+      &.techmasters,
+      &.devnet,
+      &.pathao,
+      &.authlab,
+      &.themexpert
+        height: 40px
+      &.wedevs
+        width: 254px
+      &.joomshaper
+        width: 213px
+      &.techmasters
+        width: 158px
+      &.devnet
+        width: 126px
+      &.pathao
+        width: 87px
+      &.authlab
+        width: 90px
+      &.themexpert
+        width: 163px
+
+    &__content
+      max-width: 600px
+      +tablet
+        margin-left: 300px
+      // background-color: rgba($blue, 0.1)
+    &__title
+      font-size: 2.4em
+      color: $black
+      font-weight: $weight-bold
+      display: none
+      +tablet
+        display: block
+    &__copy
+      // max-width: 480px
+      font-size: 1.6em
+      color: #666
+      line-height: 1.66
+      margin-top: 10px

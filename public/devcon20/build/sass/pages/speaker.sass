@@ -1,0 +1,162 @@
+.honorableSpeaker
+  position: relative
+  padding-top: 40px
+  padding-bottom: 100px
+  &__container
+    +container
+  &__row
+    position: relative
+    overflow: hidden
+  &__list
+    display: flex
+    flex-flow: row wrap
+    margin-left: -10px
+    margin-right: -10px
+    +tablet
+      margin-left: -15px
+      margin-right: -15px
+    +desktop
+      margin-left: -25px
+      margin-right: -25px
+  &__item
+    padding: 10px
+    width: 50%
+    +tablet
+      padding: 15px
+      width: 33.3333%
+    +desktop
+      padding: 25px
+
+  .speaker
+    display: flex
+    flex-direction: column
+    text-decoration: none
+    min-height: 100px
+    height: 100%
+    border-radius: 8px
+    border: 1px solid #ebebeb
+    position: relative
+    overflow: hidden
+    color: $black
+    > *
+      pointer-events: none
+    &__image
+      position: relative
+      width: 100%
+      padding-bottom: 100%
+      background-color: $green
+      overflow: hidden
+      background-size: cover
+      background-position: center
+      background-repeat: no-repeat
+    &__content
+      width: 100%
+      position: relative
+      padding: 10px 15px 20px 10px
+      +tablet 
+        padding: 15px 30px 25px 15px
+      +desktop
+        padding: 20px 30px 40px 20px
+    &__name
+      font-size: 1.4em
+      font-weight: $weight-semibold
+      +tablet
+        font-size: 1.8em
+    &__copy
+      font-size: 1.2em
+      color: #999
+      margin-top: 6px
+      +tablet 
+        font-size: 1.4em
+        margin-top: 8px
+        padding-right: 20px
+
+
+[id^="SpeakerInfo"]
+  z-index: 200
+  +desktop
+    overflow-y: auto
+  .modal__overlay
+    // background-color: rgba($blue, 0.97)
+    +tablet
+      background-color: rgba($blue, 0.97)
+  .modal__closeTop
+    z-index: 10
+    background-color: $white
+    fill: $black
+    height: 44px
+    width: 44px
+    border-radius: 50em
+    margin-top: 20px
+    margin-right: 20px
+  .modal__content
+    overflow: hidden
+    position: relative
+    height: 100%
+    transform: translateY(100%)
+    transition: all $speed*3 ease
+    +tablet
+      max-width: 600px
+      margin-left: auto
+      margin-right: auto
+      border-radius: 20px
+      transform: translateY(100px)
+      height: auto
+      max-height: none
+      margin-top: 100px
+      margin-bottom: 100px
+    main
+      height: 100%
+      overflow-y: auto
+      +tablet
+        padding-bottom: 0
+
+
+  &.modal--open
+    .modal__content
+      transform: translateY(0%)
+      transition: all $speed*4 ease
+
+.speakerInfoBanner
+  height: 210px
+  position: relative
+  background-size: cover
+  background-position: center
+  background-repeat: no-repeat
+  background-color: rgba($green, 1)
+  +tablet
+    height: 290px
+
+.speakerInfoContent
+  padding: 20px 30px 100px
+  +tablet
+    padding: 30px 60px 120px
+  .heading
+    font-size: 2.4em
+    font-weight: $weight-semibold
+    + .copy
+      color: #999
+  .copy
+    font-size: 1.4em
+    color: #666
+    margin-top: 6px
+    line-height: 1.67
+    max-width: 480px
+    +tablet
+      margin-top: 8px
+      padding-right: 30px
+  .title
+    font-size: 1.8em
+    font-weight: $weight-semibold
+    + .copy
+      margin-top: 20px
+
+  .label
+    font-size: 1.4em
+    font-weight: $weight-semibold
+    margin-top: 40px
+  .divider
+    border-bottom: 1px solid #ddd
+    margin-top: 40px
+    margin-bottom: 40px
+

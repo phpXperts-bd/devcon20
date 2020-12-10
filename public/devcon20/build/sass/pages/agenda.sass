@@ -1,0 +1,69 @@
+.eventAgenda
+  position: relative
+  padding-bottom: 100px
+  &__container
+    +container
+  &__row
+    position: relative
+
+  &__list
+
+  &__item
+    position: relative
+    padding-top: 40px
+    padding-bottom: 40px
+    +tablet
+      padding-top: 70px
+      padding-bottom: 70px
+    &:not(:last-child)
+      border-bottom: 1px solid #ebebeb
+
+  .wrapContent
+    margin-left: 30px
+    min-height: 125px
+    +tablet
+      margin-left: 300px
+      display: flex
+      flex-flow: row wrap
+  a.heading
+    text-decoration: none
+    line-height: $heading-line-height
+    // background-color: rgba($green, 0.1)
+  .heading,
+  .title
+    +tablet
+      width: 100%
+  .heading 
+    margin-top: 0
+    // background-color: rgba($black, 0.1)
+    
+  .timetime
+    position: absolute
+    top: 0 
+    left: 0
+    font-size: 1.4em
+    font-weight: $weight-semibold
+    color: $black
+    margin-top: 0
+    transform: translateX(-100%) rotate(-90deg)
+    transform-origin: top right
+    margin-left: -40px
+    margin-top: 6px
+    // background-color: rgba($red, 0.1)
+    +tablet
+      transform: translateX(-100%) 
+      width: 300px
+      font-size: 2.4em
+      margin-top: 0
+      margin-left: 0
+    + .copy
+      margin-top: 20px
+
+  .speaker
+    +tablet
+      display: inline-flex
+      width: 250px
+      border: 1px solid #EBEBEB
+      border-radius: 6px
+      padding: 9px
+      margin-right: 20px

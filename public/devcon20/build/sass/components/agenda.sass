@@ -1,0 +1,273 @@
+// 5 mins slot
+$min: 60px
+  
+.adenda
+  position: relative
+  overflow: hidden
+  background-color: $blue
+  // padding-top: 20px
+  // padding-bottom: 20px
+  +tablet
+  &__container
+    position: relative
+    width: 100%
+    padding-left: 30px
+    padding-right: 30px
+    +tablet
+      padding-left: 70px 
+      padding-right: 70px 
+    +desktop
+      max-width: 840px
+      margin-left: auto
+      margin-right: auto
+      padding-left: 0 
+      padding-right: 0 
+    +widescreen
+      max-width: 1200px
+
+  &__nextPrev
+    display: none
+    opacity: 0
+    visibility: hidden
+    +tablet
+      display: block
+      opacity: 1
+      visibility: visible
+      position: absolute
+      left: 0
+      width: 100%
+      top: 0
+      margin-top: 44px + 10
+      z-index: 10
+    &::before,
+    &::after
+      +tablet
+        z-index: 1
+        content: ""
+        position: absolute
+        top: 0
+        width: 1000%
+        height: 1000px
+        pointer-events: none
+    &::before
+      +tablet
+        left: 0
+        margin-left: $min / 2
+        transform: translateX(-100%)
+        background: linear-gradient(270deg, rgba($blue, 0) 0%, rgba($blue, 1) 120px, rgba($blue, 1) 100%)
+    &::after
+      +tablet
+        right: 0
+        margin-right: $min / 2
+        transform: translateX(100%)
+        background: linear-gradient(90deg, rgba($blue, 0) 0%, rgba($blue, 1) 120px, rgba($blue, 1) 100%)
+  &__slider
+    position: relative
+    padding-top: 20px
+    padding-bottom: 40px  
+    +tablet
+      white-space: nowrap
+      overflow-x: auto
+      overflow-y: hidden
+      padding-top: 60px
+      padding-bottom: 80px   
+      &::-webkit-scrollbar
+        -webkit-appearance: none
+        display: none
+
+
+.time
+  display: none
+  +tablet
+    position: relative
+    display: inline-flex
+    margin-bottom: 30px
+  &-slot
+    +tablet
+      position: relative
+      font-size: 1.6em
+      display: inline-block
+      height: 44px
+      width: $min * 2
+      min-width: $min * 2
+      text-align: center
+      color: rgba($white, 0.6)
+      &::before,
+      &::after
+        content: ""
+        position: absolute
+        top: 100%
+        margin-top: 15px
+        height: 1000px
+      &::before
+        width: 100%
+        left: 0
+        border-left: 1px solid rgba($white, 0.09)
+      &::after
+        width: 1px
+        left: 50%
+        background-color: rgba($white, 0.29)
+
+    &:last-child
+      +tablet
+        margin-right: 70px
+      +desktop
+        margin-right: calc((100vw - 840px) / 2)
+      +widescreen
+        margin-right: calc((100vw - 1200px) / 2)
+      &::before
+        border-right: 1px solid rgba($white, 0.19)
+
+.session
+  position: relative
+  margin-top: 30px
+  &::before
+    content: "Event schedule"
+    position: relative
+    font-size: 2.4em
+    color: $white
+    line-height: 1.22
+    padding-bottom: 20px
+    display: block
+    +tablet
+      display: none
+  +tablet
+    display: inline-flex
+    align-items: flex-start
+  &-cell
+    text-decoration: none
+    display: inline-block
+    min-height: 60px
+    background-color: $green
+    border-radius: 6px
+    border-left: 2px solid $white
+    padding-top: 18px
+    padding-bottom: 18px
+    padding-left: 20px
+    padding-right: 40px
+    width: 100%
+    white-space: normal
+    margin-bottom: 20px
+    +tablet
+      padding-top: 13px
+      padding-bottom: 26pxs
+      // border-color: $white
+    h2
+      font-size: 16px
+      color: $white
+      +tablet
+        font-size: 14px
+    p
+      font-size: 14px
+      color: rgba($white, 0.7)
+      margin-top: 2px
+      +tablet
+        font-size: 12px
+        margin-top: 10px
+      + p
+        margin-top: 20px
+        +tablet
+          display: none
+    &:last-child
+      margin-right: $min / 2
+      +tablet
+        margin-right: 70px
+      +desktop
+        margin-right: calc((100vw - 840px) / 2)
+      +widescreen
+        margin-right: calc((100vw - 1140px) / 2) 
+  +tablet
+    &-5min
+      width: $min
+      min-width: $min
+    &-10min
+      width: $min * 2
+      min-width: $min * 2
+    &-15min
+      width: $min * 3
+      min-width: $min * 3
+    &-20min
+      width: $min * 4
+      min-width: $min * 4
+    &-25min
+      width: $min * 5
+      min-width: $min * 5
+    &-30min
+      width: $min * 6
+      min-width: $min * 6
+    
+    .beforeSpace
+      &-5min
+        margin-left: $min
+      &-10min
+        margin-left: $min * 2
+      &-15min
+        margin-left: $min * 3
+
+    .afterSpace
+      &-5min
+        margin-right: $min
+      &-10min
+        margin-right: $min * 2
+      &-15min
+        margin-right: $min * 3
+
+
+
+.button
+  &-next,
+  &-prev
+    +button
+    z-index: 2
+    font-size: 1.6em
+    position: absolute
+    top: 0
+    width: 44px
+    height: 44px
+    background-color: $green
+    border-radius: 50em
+    color: rgba($white, 0)
+    &::before
+      content: ""
+      position: absolute
+      top: 50%
+      left: 50%
+      width: 10px
+      height: 10px
+      border: solid $blue
+      display: inline-block
+      border-width: 0 2px 2px 0
+    &::after
+      content: ""
+      position: absolute
+      top: 0
+      height: 100%
+      width: 1000px
+      background-color: $blue
+      pointer-events: none
+  &-prev
+    left: 0
+    +tablet
+      margin-left: 30px
+    +desktop
+      margin-left: 0
+      transform: translateX(-100%)
+    &::before
+      transform: translate(-50%, -50%) rotate(135deg)
+      margin-left: 1px
+    &::after
+      left: 0
+      transform: translateX(-100%)
+  &-next
+    right: 0
+    +tablet
+      margin-right: 30px
+    +desktop
+      margin-right: 0
+      transform: translateX(100%)
+    &::before
+      transform: translate(-50%, -50%) rotate(-45deg)
+      margin-left: -1px
+    &::after
+      right: 0
+      transform: translateX(100%)

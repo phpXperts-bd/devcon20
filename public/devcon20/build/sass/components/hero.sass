@@ -1,0 +1,143 @@
+.hero
+  position: relative
+  background-color: $blue
+  &__container
+    +container-wide
+  &__row
+    position: relative
+    +desktop
+      display: flex
+      flex-flow: row nowrap
+      align-items: stretch
+  &__videoWrapper
+    position: relative
+    +desktop
+      flex: 1
+    .video
+      position: relative
+      width: 100%
+      padding-bottom: 56.25%
+      background-color: $black
+      span
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        display: inline-flex
+        width: 144px
+        height: 32px
+        background-repeat: no-repeat
+        background-size: cover
+  &__chatWrapper
+    height: calc((100vh - 56.25vw) - 56px)
+    background-color: $white
+    box-shadow: 0 1px 5px rgba($black, 0.21)
+    position: relative
+    +desktop
+      height: auto
+      width: 300px
+      background-color: $white
+      box-shadow: none
+    .mainContent
+      padding-left: 30px
+      padding-right: 30px
+      position: absolute
+      top: 0
+      left: 0
+      bottom: 0
+      width: 100%
+      margin-bottom: 96px
+      padding-bottom: 60px
+      overflow-y: auto
+    .bottombar
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      padding: 20px
+      background-color: $white
+      &::after
+        content: ""
+        position: absolute
+        bottom: 0
+        left: 0
+        width: 100%
+        height: 80px
+        margin-bottom: 96px - 20
+        background: linear-gradient(180deg, rgba($white, 0) 0, $white 100%)
+        pointer-events: none
+      .chat
+        +button
+        width: 100%
+        height: 56px
+        background-color: #0091FF
+        border-radius: 4px
+        font-size: 1.8em
+        letter-spacing: 0.02em
+        color: $white
+        font-weight: $weight-bold
+
+
+
+.wrapContent
+  position: relative
+  max-width: 600px
+  .heading
+    font-size: 2.4em
+    color: $green
+    font-weight: $weight-bold
+    margin-top: 30px
+    + .copy
+      margin-top: 20px
+  .timetime
+    font-size: 1.4em
+    color: #999
+    margin-top: 8px
+  .copy
+    max-width: 520px
+    font-size: 1.4em
+    color: #666
+    line-height: 1.55
+    margin-top: 30px
+  .title
+    font-size: 1.8em
+    font-weight: $weight-bold
+    margin-top: 40px
+    &:first-child
+      margin-top: 30px
+      + .copy
+        margin-top: 20px
+  a.speaker
+    cursor: pointer
+    text-decoration: none
+    color: $black
+    > *
+      pointer-events: none
+  .speaker
+    position: relative
+    display: flex
+    margin-top: 20px
+    &__image
+      position: relative
+      width: 40px
+      height: 40px
+      border: 1px solid rgba($blue, 0.1)
+      background-color: rgba($blue, 0.05)
+      border-radius: 4px
+      overflow: hidden
+      background-size: cover
+      background-position: center
+      background-repeat: no-repeat
+    &__content
+      flex: 1
+      position: relative
+      padding-top: 2px
+      padding-left: 12px
+    &__name
+      font-size: 1.4em
+      font-weight: $weight-semibold
+    &__copy
+      font-size: 1.2em
+      color: #999
+      margin-top: 4px
+      

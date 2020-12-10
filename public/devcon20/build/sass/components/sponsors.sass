@@ -1,0 +1,95 @@
+.sponsors
+  position: relative
+  padding-top: 60px
+  padding-bottom: 50px
+  overflow: hidden
+  +tablet
+    padding-top: 120px
+    padding-bottom: 100px
+  &__container
+    +container
+    max-width: 400px
+    // background-color: rgba($blue, 0.2)
+    +tablet
+      max-width: 668px
+  &__row
+    position: relative
+    // background-color: rgba($blue, 0.2)s
+  &__title
+    font-size: 32px
+    color: $blue
+    font-weight: $weight-bold
+    text-align: center
+    margin-bottom: 50px
+    +tablet
+      font-size: 70px
+      margin-bottom: 100px
+
+  &__list
+    display: flex
+    flex-flow: row wrap
+    justify-content: center
+    position: relative
+    margin-left: -30px
+    margin-right: -30px
+    // background-color: rgba($blue, 0.2)
+    +tablet
+      margin-left: -50px
+      margin-right: -50px
+  &__item
+    +button
+    // background-color: rgba($blue, 0.2)
+    margin-left: 20px
+    margin-right: 20px
+    margin-bottom: 30px
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    +tablet 
+      margin-bottom: 60px
+      margin-left: 42px
+      margin-right: 42px
+
+    &.wedevs,
+    &.joomshaper
+      height: 34px
+      +tablet
+        height: 60px
+        margin-left: 50px
+        margin-right: 50px
+    &.techmasters,
+    &.devnet,
+    &.pathao,
+    &.authlab,
+    &.themexpert
+      height: 23px
+      +tablet
+        height: 40px
+    &.wedevs
+      width: 144px
+      +tablet
+        width: 254px
+    &.joomshaper
+      width: 122px
+      +tablet
+        width: 213px
+    &.techmasters
+      width: 91px
+      +tablet
+        width: 158px
+    &.devnet
+      width: 73px
+      +tablet
+        width: 126px
+    &.pathao
+      width: 50px
+      +tablet
+        width: 87px
+    &.authlab
+      width: 52px
+      +tablet
+        width: 90px
+    &.themexpert
+      width: 94px
+      +tablet
+        width: 163px

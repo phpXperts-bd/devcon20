@@ -1,0 +1,1 @@
+<script src="{{ asset('devcon20/scripts/main.js') }}"></script>

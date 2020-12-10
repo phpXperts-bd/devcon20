@@ -1,0 +1,92 @@
+=clearfix
+  &:before,
+  &:after
+    content: ""
+    display: table
+  &:after
+    clear: both
+
+=placeholder
+  $placeholders: ':-moz' ':-webkit-input' '-moz' '-ms-input'
+  @each $placeholder in $placeholders
+    &:#{$placeholder}-placeholder
+      @content
+
+=tablet
+  @media screen and (min-width: $tablet)
+    @content
+
+=desktop
+  @media screen and (min-width: $desktop)
+    @content
+
+=widescreen
+  @media screen and (min-width: $widescreen)
+    @content
+
+=container
+  position: relative
+  padding-right: 30px
+  padding-left: 30px
+  margin-left: auto
+  margin-right: auto
+  max-width: $desktop
+  // +widescreen
+  //   max-width: $widescreen
+  //   padding-right: 40px
+  //   padding-left: 40px
+=container-wide
+  position: relative
+  margin-left: auto
+  margin-right: auto
+  max-width: $widescreen
+  width: 100%
+
+=button
+  position: relative
+  border: 0
+  padding: 0
+  font-family: $family-base
+  font-weight: $weight-medium
+  background-color: transparent
+  text-decoration: none
+  white-space: nowrap
+  text-rendering: auto
+  user-select: none
+  box-shadow: none
+  cursor: pointer
+  display: inline-flex
+  align-items: center
+  justify-content: center
+
+  &:hover,
+  &:focus
+    outline: none
+
+
+=input
+  position: relative
+  font-family: $body-family
+  max-width: 100%
+  width: 100%
+  // height: 56px
+  line-height: 1.5
+  color: $black
+  border: 1px solid #ebebeb
+  box-shadow: none
+  border-radius: 2px
+  padding: 12px 15px
+  display: inline-flex
+  justify-content: flex-start
+  align-items: center
+  transition: all 0.1s ease-out
+
+  &:focus,
+  &:active
+    border-color: #bbb
+    box-shadow: none
+    outline: none
+    // background-color: #fff
+
+  +placeholder
+    color: #bbbbbb

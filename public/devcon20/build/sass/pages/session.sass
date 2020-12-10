@@ -1,0 +1,157 @@
+
+.sessionVideo
+  position: relative
+  background-color: $blue
+  overflow: hidden
+  &__container
+    +container-wide
+  &__row
+    position: relative
+    +desktop
+      display: flex
+      flex-flow: row wrap
+      align-items: stretch
+  &__videoWrapper
+    position: relative
+    +desktop
+      order: 1
+      flex: 1
+    .video
+      position: relative
+      width: 100%
+      padding-bottom: 56.25%
+      background-color: $black
+      span
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        display: inline-flex
+        width: 144px
+        height: 32px
+        background-repeat: no-repeat
+        background-size: cover
+  &__chatWrapper
+    position: relative
+    background-color: $white
+    height: calc((100vh - 56.25vw) - (56px * 2))
+    overflow-y: auto
+    +tablet
+      height: auto
+      overflow-y: visible
+    +desktop
+      order: 2
+      width: 300px
+      background-color: $white
+      &::after
+        content: ""
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: 100%
+        box-shadow: 0 1px 5px rgba($black, .19)
+      
+    .sessionVideoChat
+      padding-top: 20px
+      padding-left: 30px
+      padding-right: 30px
+      font-size: 1.4em
+      color: #999
+      +desktop
+        height: 100%
+        display: flex
+        justify-content: center
+        align-items: center
+
+  &__sessionInfo
+    position: relative
+    width: 100%
+    background-color: $white
+    padding-bottom: 70px
+    height: calc((100vh - 56.25vw) - (56px * 2))
+    overflow-y: auto
+    +tablet
+      height: auto
+      overflow-y: visible
+    +desktop
+      order: 3
+      &::before,
+      &::after
+        content: ""
+        position: absolute
+        top: 0
+        width: 1000%
+        height: 100%
+        background-color: $white
+      &::before
+        left: 0
+        transform: translateX(-100%)
+      &::after
+        right: 0
+        transform: translateX(100%)
+    .sessionVideoInfo
+      +container
+      .wrapContent
+        max-width: 600px
+        padding-top: 1px
+        +tablet
+          display: flex
+          flex-flow: row wrap
+        +desktop
+          padding-top: 50px
+          padding-bottom: 70px
+      .heading,
+      .title
+        +tablet
+          width: 100%
+      .speaker
+        +tablet
+          display: inline-flex
+          width: 250px
+          border: 1px solid #EBEBEB
+          border-radius: 6px
+          padding: 9px
+          margin-right: 20px
+        
+
+.sessionVideo__row > input[type="radio"] 
+  position: absolute
+  display: none
+  + label
+    color: $white
+    fill: $white
+    height: 56px
+    display: inline-flex
+    align-items: center
+    font-size: 14px
+    padding-left: 20px
+    padding-right: 20px
+    cursor: pointer
+    +desktop
+      display: none
+    svg
+      margin-right: 10px
+
+.sessionVideo__row > input#tab1 + label
+  margin-left: 10px
+
+
+.sessionVideo__row > input:checked + label
+  color: $green
+  fill: $green
+
+.sessionVideo__sessionInfo,
+.sessionVideo__chatWrapper
+  display: none
+  +desktop
+    display: block
+
+.sessionVideo__row > input#tab1:checked ~ .sessionVideo__sessionInfo,
+.sessionVideo__row > input#tab2:checked ~ .sessionVideo__sessionInfo + .sessionVideo__chatWrapper
+  display: block
+
+
+    
+  
+ 
