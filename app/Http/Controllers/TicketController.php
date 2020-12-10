@@ -321,6 +321,12 @@ class TicketController extends Controller
         return view('angularbd.ticket-payment', compact('attendee'));
     }
 
+    public function showLoginForm() {
+        $attendeeType = AttendeeType::GUEST;
+
+        return view('angularbd.login', compact('attendeeType'));
+    }
+
     public function sendProfileUpdateForm()
     {
         $attendeeType = AttendeeType::GUEST;
@@ -349,6 +355,36 @@ class TicketController extends Controller
         }
 
         return back();
+    }
+
+    public function attendeeSignIn(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'hash_code' => ['required', 'string', 'min:20']
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $attendee = Attendee::where('hash_code', $request->input('hash_code'))->first();
+
+        if (blank($attendee)) {
+            toast('Invalid hashcode!', 'warning');
+            return back();
+        }
+
+        Auth::loginUsingId($attendee->id);
+
+        return redirect()->route('attendee.update.form.show');
+    }
+
+    public function showAttendeeForm($code) {
+
+        $attendeeType = AttendeeType::GUEST;
+
+        $attendee = Attendee::where('hash_code', $code)->first();
+
+        return view('angularbd.buy-ticket-edit', compact('attendeeType', 'attendee'));
     }
 
     public function updateAttendee($code, Request $request) {
