@@ -10,7 +10,7 @@ ENV fpm_conf /etc/php/7.4/fpm/pool.d/www.conf
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 #set to EST time
-RUN echo "America/New_York" > /etc/timezone
+RUN echo "Asia/Dhaka" > /etc/timezone
 RUN dpkg-reconfigure -f noninteractive tzdata
 
 # Install Basic Requirements
