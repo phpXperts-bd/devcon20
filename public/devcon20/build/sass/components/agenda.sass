@@ -1,5 +1,32 @@
 // 5 mins slot
 $min: 60px
+
+#current
+  position: absolute
+  top: 0
+  left: 0
+  width: 1px
+  height: 1000px
+  margin-top: 50px 
+  // margin-left: 80px
+  z-index: 1
+  &::before
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    margin-top: -10px
+    margin-left: -10px
+    width: 0px
+    height: 0px
+    border-left: 10px solid transparent
+    border-right: 10px solid transparent
+    border-top: 12px solid transparent
+  &.active
+    background-color: $yellow
+    &::before
+      border-top-color: $yellow
+
   
 .adenda
   position: relative
