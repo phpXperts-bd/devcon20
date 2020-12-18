@@ -100,8 +100,9 @@ Route::group([
     'namespace'  => 'Devcon20',
 ], function () { 
     Route::view('/', 'devcon20.app')->name('devcon20.index');
-    Route::get('session/{name}', 'LiveController@index')->name('live.session.title');
-    Route::get('speakers', 'LiveController@index')->name('live.session.title');
+    Route::get('session/{slug}', 'LiveController@session')->name('live.session.slug');
+    Route::get('speakers', 'LiveController@speaker')->name('live.speakers');
+    Route::get('speaker/{slug}', 'LiveController@speaker')->name('live.speaker.slug');
 
     Route::middleware('guest')->get('/user/login', 'LiveController@showLoginForm')->name('live.login.form');
     Route::middleware('guest')->post('/user/login', 'LiveController@attendeeSignIn')->name('live.login.post');

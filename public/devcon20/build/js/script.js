@@ -12,9 +12,9 @@
     // document.getElementById('clock').innerText = currenttime;
 
 
-    var eventDate = "12/13/2020";
+    var eventDate = "12/17/2020";
     var timeStart = new Date(eventDate + " 09:55 AM"); 
-    var timeEnd = new Date(eventDate + " 02:55 PM"); 
+    var timeEnd = new Date(eventDate + " 06:05 PM"); 
     var todaysDate = new Date();
 
     // time between given range

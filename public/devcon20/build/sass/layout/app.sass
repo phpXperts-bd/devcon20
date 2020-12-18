@@ -53,8 +53,8 @@
     align-items: center
     padding-top: 20px
     padding-bottom: 40px
-    margin-top: 60px
     +tablet
+      margin-top: 60px
       flex-direction: row
   .social
     display: flex
@@ -83,17 +83,23 @@
     font-size: 1.4em
     color: #666
   .quicklinks
-    font-size: 1.4em
+    font-size: 1.2em
     color: #666
     display: inline-flex
+    +tablet
+      font-size: 1.4em
     &__item
       &:not(:last-child)
         &::after
           content: "•"
           position: relative
-          margin-right: 12px
-          margin-left: 12px
+          margin-right: 6px
+          margin-left: 6px
           pointer-events: none
+          +tablet
+            margin-right: 12px
+            margin-left: 12px
+
     &__link
       +button
       position: relative

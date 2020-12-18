@@ -26,6 +26,11 @@ class LiveController extends Controller
         return view('devcon20.app');
     }
 
+    public function session()
+    {
+        return view('devcon20.session');
+    }
+
     public function showLoginForm()
     {
         $attendeeType = AttendeeType::GUEST;

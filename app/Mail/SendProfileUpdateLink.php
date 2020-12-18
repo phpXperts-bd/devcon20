@@ -34,7 +34,7 @@ class SendProfileUpdateLink extends Mailable
     {
         $attendee = $this->attendee;
         Log::info("Sending profile update link for the attendee: Type - " . $attendee->type . ' id - ' . $attendee->id . ' email - ' . $attendee->email);
-        return $this->subject('Please add your gift shipment address | phpXperts DevCon20')
+        return $this->subject('Please add your gift shipment address | DevCon | Ignore if you have done it already.')
             ->view('emails.update_profile_link', compact('attendee'));
     }
 }
