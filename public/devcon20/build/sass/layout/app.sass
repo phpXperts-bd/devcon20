@@ -48,16 +48,27 @@
   &__row
     border-top: 1px solid #ebebeb
     display: flex
-    flex-direction: row 
+    flex-direction: column 
     justify-content: space-between
     align-items: center
     padding-top: 20px
     padding-bottom: 40px
     margin-top: 60px
+    +tablet
+      flex-direction: row
   .social
     display: flex
     flex-direction: row
     justify-content: center
+    margin-top: 30px
+    +tablet
+      margin-top: 0
+    &__copy
+      font-size: 1.4em
+      color: $black
+      height: 32px
+      line-height: 32px
+      margin-right: 10px
     &__link
       +button
       // background-color: rgba($red, 0.1)
@@ -68,13 +79,29 @@
       background-repeat: no-repeat
       &:not(:last-child)
         margin-right: 10px
-
-  .crafted
+  .copyright
     font-size: 1.4em
-    color: #999
-    a
+    color: #666
+  .quicklinks
+    font-size: 1.4em
+    color: #666
+    display: inline-flex
+    &__item
+      &:not(:last-child)
+        &::after
+          content: "•"
+          position: relative
+          margin-right: 12px
+          margin-left: 12px
+          pointer-events: none
+    &__link
+      +button
       position: relative
       text-decoration: none
       color: inherit
+      height: 32px
       &:hover
         text-decoration: underline
+        color: $red
+      
+

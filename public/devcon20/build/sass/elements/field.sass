@@ -1,0 +1,104 @@
+.field
+  position: relative
+  &:not(:first-child)
+    margin-top: 20px
+    +tablet
+      margin-top: 30px
+
+  $root: &;
+
+  &.hasError
+    #{$root}__input
+      border-color: red
+
+  &__input
+    +input
+    height: 44px
+    padding: 12px 15px 10px
+    font-size: 1.6em
+    font-weight: $weight-medium
+    border: none
+    border: 1px solid $blue
+    border-radius: 6px
+    +tablet
+      height: 48px
+      padding: 12px 20px 10px
+      font-size: 2em
+
+    &:focus,
+    &:active
+      box-shadow: none
+      outline: none
+      border-color: $blue
+
+    +placeholder
+      color: #bbbbbb
+
+  &__label
+    display: block
+    color: $blue
+    font-size: 1.6em
+    font-weight: $weight-semibold
+    position: relative
+    width: 100%
+    white-space: nowrap
+    overflow: hidden
+    text-overflow: ellipsis
+    pointer-events: none
+    transition: all 0.1s ease-out
+    +tablet
+      font-size: 1.8em
+      margin-bottom: 5px
+          
+  &__error
+    color: red
+    font-size: 1.2em
+    margin-top: 2px
+
+  
+.checkboxWrapper
+  padding-top: 20px
+  +tablet
+    padding-top: 40px
+.checkbox
+  position: relative
+  display: block
+  margin-top: 10px
+
+  &__box
+    display: inline-flex
+    input[type="checkbox"]
+      opacity: 0
+      position: absolute
+      z-index: -1
+      &:checked ~ .checkbox__checkbox
+        border-color: $green
+        background-color: $green
+  &__checkbox
+    position: relative
+    width: 18px
+    height: 18px
+    border: 1px solid #707070
+    margin-right: 10px
+    border-radius: 4px
+    &::before
+      content: ""
+      position: absolute
+      left: 6px
+      top: 2px
+      width: 5px
+      height: 9px
+      border: solid white
+      border-width: 0 1px 1px 0
+      transform: rotate(45deg)
+  &__text
+    flex: 1
+    padding-top: 3px
+    font-size: 1.2em
+    line-height: 1.33
+    font-weight: $weight-medium
+    color: $blue
+    max-width: 420px
+    padding-right: 20px
+    a
+      color: $green
