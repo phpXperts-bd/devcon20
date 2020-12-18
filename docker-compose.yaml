@@ -31,6 +31,7 @@ services:
     environment:
       - "MYSQL_ROOT_PASSWORD=${DB_PASSWORD}"
       - "MYSQL_DATABASE=${DB_DATABASE}"
+      - TZ=Asia/Dhaka
     volumes:
       - ${BACKUP_PATH}/mysql:/var/lib/mysql
     ports:

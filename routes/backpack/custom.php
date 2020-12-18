@@ -12,6 +12,8 @@ Route::group([
     'namespace'  => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
     Route::crud('attendee', 'AttendeeCrudController');
+    Route::crud('session', 'SessionCrudController');
+    Route::crud('speaker', 'SpeakerCrudController');
     Route::crud('payment', 'PaymentCrudController');
     Route::crud('opening', 'OpeningCrudController');
     Route::get('/opening/attendee/{id}', 'OpeningCrudController@setAttendAt')->name('set.attend_at');
