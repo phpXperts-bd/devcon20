@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="bottombar">
-              <a class="chat" href="{{ route('buy.ticket') }}./session.html">Join the chat</a>
+              <a class="chat" href="{{ route('live.session.slug', ['slug'=>'test-php-title']) }}">Join the chat</a>
             </div>
           </div>
         </div>
