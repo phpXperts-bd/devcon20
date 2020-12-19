@@ -10,8 +10,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Shipu\Watchable\Traits\WatchableTrait;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Attendee extends Model
+
+class Attendee extends Authenticatable
 {
     use CrudTrait, WatchableTrait;
 
@@ -36,6 +38,8 @@ class Attendee extends Model
         'address_line_3',
         'city',
         'district',
+        'hash_code',
+        'hash_code_duration',
     ];
 
     protected $casts = [
@@ -70,10 +74,10 @@ class Attendee extends Model
 
     public function onModelCreated()
     {
-        dispatch(new SendEmailJob($this, new SuccessfullyCreateAttendee($this)));
-        if(env('SMS_ENABLED')) {
-            dispatch(new SendSmsJob($this, ($this->type==\App\Enums\AttendeeType::ATTENDEE?env('CONFIRM_MESSAGE'):env('GUEST_MESSAGE'))));
-        }
+//        dispatch(new SendEmailJob($this, new SuccessfullyCreateAttendee($this)));
+//        if(env('SMS_ENABLED')) {
+//            dispatch(new SendSmsJob($this, ($this->type==\App\Enums\AttendeeType::ATTENDEE?env('CONFIRM_MESSAGE'):env('GUEST_MESSAGE'))));
+//        }
     }
 
     public function openPaymentPage()

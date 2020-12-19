@@ -38,37 +38,43 @@
     <div class="registrationContent">
         <h2 class="heading">Registration for DevCon</h2>
         <div class="divider"></div>
-        <form class="form" action="">
-        <div class="field">
-            <label class="field__label" for="mobile">Email</label>
-            <input class="field__input" type="email" name="email" placeholder="Write your email address">
-            <!-- <p class="field__error">Error message</p> -->
-        </div>
-        <div class="field">
-            <label class="field__label" for="name">Full Name</label>
-            <input class="field__input" type="text" name="name" placeholder="Write full name here">
-        </div>
+        <form class="form" method="post" action="{{ route('live.registration.post') }}">
+            @csrf()
+            <div class="field">
+                <label class="field__label" for="name">Full Name</label>
+                <input class="field__input" required type="text" name="name" placeholder="Write full name here">
+            </div>
+            <div class="field">
+                <label class="field__label" for="mobile">Email</label>
+                <input class="field__input" required type="email" name="email" placeholder="Write your email address">
+                <!-- <p class="field__error">Error message</p> -->
+            </div>
+            <div class="field">
+                <label class="field__label" for="mobile">Mobile</label>
+                <input class="field__input" required type="text" name="mobile" placeholder="Write your mobile number">
+                <!-- <p class="field__error">Error message</p> -->
+            </div>
 
-        <div class="checkboxWrapper">
-            <label class="checkbox">
-            <div class="checkbox__box">
-                <input type="checkbox" name="checkbox1" value="">
-                <span class="checkbox__checkbox"></span>
-                <span class="checkbox__text">I’ve read and understand <a href="#link">DevCon’s Privacy Policy</a></span>
+
+            <div class="checkboxWrapper">
+                <label class="checkbox">
+                <div class="checkbox__box">
+                    <input type="checkbox" name="checkbox1" value="">
+                    <span class="checkbox__checkbox"></span>
+                    <span class="checkbox__text">I’ve read and understand <a href="#link">DevCon’s Privacy Policy</a></span>
+                </div>
+                </label>
+                <label class="checkbox">
+                <div class="checkbox__box">
+                    <input type="checkbox" name="checkbox1" value="">
+                    <span class="checkbox__checkbox"></span>
+                    <span class="checkbox__text">I understand by checking this box, I agree to receive communications from DevCon and their partners.</span>
+                </div>
+                </label>
             </div>
-            </label>
-            <label class="checkbox">
-            <div class="checkbox__box">
-                <input type="checkbox" name="checkbox1" value="">
-                <span class="checkbox__checkbox"></span>
-                <span class="checkbox__text">I understand by checking this box, I agree to receive communications from DevCon and their partners.</span>
-            </div>
-            </label>
-        </div>
-        <a class="registerNowButton" href="./session">Register Now!</a>
+            <button class="registerNowButton" type="submit">Register Now!</button>
         </form>
     </div>
     </main>
 </div>
 </div>
-  

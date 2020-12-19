@@ -12,6 +12,7 @@
           </svg>
         </button>
         <button class="registration" data-modal="Registration">Registration</button>
+
         <!-- <span class="avatar" style="background-image: url({{ asset('devcon20/images/avatar@2x.jpg') }})"></span> -->
         <div class="organizer" style="background-image: url({{ asset('devcon20/icons/organizer.svg') }})"></div>
       </div>
