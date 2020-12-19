@@ -10,7 +10,7 @@
             <div class="mainContent">
               <div class="wrapContent">
                 <h2 class="heading">Keynote</h2>
-                <p class="copy">Scott Johnston, CEO, Docker Docker For Developers Now More Than Ever Docker helps dev teams build apps, quickly and efficiently getting your app from developers’ desktops to the cloud.</p>
+                <p class="copy">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.</p>
                 <h2 class="title">Speaker</h2>
                 <a class="speaker" href="#link" data-modal="SpeakerInfo-uniqueNumber">
                   <div class="speaker__image" style="background-image: url({{ asset('devcon20/images/a0-40x40@2x.jpg') }});"></div>
@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="bottombar">
-              <a class="chat" href="{{ route('buy.ticket') }}./session.html">Join the chat</a>
+              <a class="chat" href="{{ route('live.session.slug', ['slug'=>'test-php-title']) }}">Join the chat</a>
             </div>
           </div>
         </div>
