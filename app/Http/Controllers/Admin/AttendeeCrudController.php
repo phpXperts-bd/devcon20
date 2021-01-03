@@ -120,12 +120,14 @@ class AttendeeCrudController extends CrudController
             [
                 'name' => 'address_line_1',
                 'type' => 'text',
-                'label' => 'Address 1'
+                'label' => 'Address 1',
+                'limit' => 500,
             ],
             [
                 'name' => 'address_line_2',
                 'type' => 'text',
-                'label' => 'Address 2'
+                'label' => 'Address 2',
+                'limit' => 500,
             ],
             [
                 'name' => 'city',
